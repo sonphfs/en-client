@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-
+    <div class="container-scroller">
+        <Header></Header>
+        <Content></Content>
+    </div>
   </div>
 </template>
 
 <script>
+import '@/assets/style/demo/style.css'
+import '@/assets/style/shared/style.css'
+import '@/assets/style/vendors/iconfonts/mdi/css/materialdesignicons.min.css'
+import '@/assets/style/vendors/iconfonts/ionicons/css/ionicons.css'
+import '@/assets/style/vendors/iconfonts/typicons/src/font/typicons.css'
+import '@/assets/style/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css'
+import '@/assets/style/vendors/css/vendor.bundle.base.css'
+import '@/assets/style/vendors/css/vendor.bundle.addons.css'
 
-
+import Header from './components/Header.vue'
+import Content from './components/Content.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header, Content
   }
 }
 </script>
@@ -20,8 +32,5 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
