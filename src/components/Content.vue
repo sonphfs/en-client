@@ -144,14 +144,26 @@
 </template>
 
 <script>
-import Part2Component from "@/components/examinations/Part7Component.vue"
+import Part1Component from "@/components/examinations/Part1Component.vue"
+import Part2Component from "@/components/examinations/Part2Component.vue"
+import Part3Component from "@/components/examinations/Part3Component.vue"
+import Part4Component from "@/components/examinations/Part4Component.vue"
+import Part5Component from "@/components/examinations/Part5Component.vue"
+import Part6Component from "@/components/examinations/Part6Component.vue"
+import Part7Component from "@/components/examinations/Part7Component.vue"
 import SidebarComponent from "@/components/examinations/SidebarComponent.vue"
 import MenuSide from '@/components/MenuSide.vue'
 
 export default {
   name: "Content",
   components: {
+    Part1Component,
     Part2Component,
+    Part3Component,
+    Part4Component,
+    Part5Component,
+    Part6Component,
+    Part7Component,
     SidebarComponent,
     MenuSide
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-8 grid-margin stretch-card">
+  <div class="col-md-9 grid-margin stretch-card">
     <div class="card">
       <div class="card-body" style="padding-left: 80px;">
         <h3>Part 7</h3>
