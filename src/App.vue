@@ -3,6 +3,7 @@
     <div class="container-scroller">
         <Header></Header>
         <Content></Content>
+        <router-view></router-view>
     </div>
   </div>
 </template>
