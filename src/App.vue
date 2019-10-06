@@ -1,34 +1,42 @@
 <template>
   <div id="app">
-    <div class="container-scroller">
-        <LandingPage></LandingPage>
-        <router-view></router-view>
+    <div class="container-scroller" v-show="!isHomePage">
+      <Header></Header>
+      <Content></Content>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import '@/assets/style/demo/style.css'
-import '@/assets/style/shared/style.css'
-import '@/assets/style/vendors/iconfonts/mdi/css/materialdesignicons.min.css'
-import '@/assets/style/vendors/iconfonts/ionicons/css/ionicons.css'
-import '@/assets/style/vendors/iconfonts/typicons/src/font/typicons.css'
-import '@/assets/style/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css'
-import '@/assets/style/vendors/css/vendor.bundle.base.css'
-import '@/assets/style/vendors/css/vendor.bundle.addons.css'
+import "@/assets/style/demo/style.css";
+import "@/assets/style/shared/style.css";
+import "@/assets/style/vendors/iconfonts/mdi/css/materialdesignicons.min.css";
+import "@/assets/style/vendors/iconfonts/ionicons/css/ionicons.css";
+import "@/assets/style/vendors/iconfonts/typicons/src/font/typicons.css";
+import "@/assets/style/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css";
+import "@/assets/style/vendors/css/vendor.bundle.base.css";
+import "@/assets/style/vendors/css/vendor.bundle.addons.css";
 
-import LandingPage from './components/landing_pages/Index.vue'
+import Header from "./components/Header.vue";
+import Content from "./components/Content.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    LandingPage
+    Header,
+    Content
+  },
+  methods: {
+    isHomePage: function() {
+      return this.$router.currentRoute.fullPath == "/home";
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

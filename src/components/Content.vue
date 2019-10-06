@@ -173,8 +173,6 @@ export default {
 <style>
   .container-fluid.page-body-wrapper {
     padding-top: 63px;
-  }
-  .container-fluid {
     padding-right: 0px;
     padding-left: 0px;
   }
