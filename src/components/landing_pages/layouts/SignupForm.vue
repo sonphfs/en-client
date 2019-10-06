@@ -29,7 +29,9 @@
 export default {
   name: "SignupForm",
   data(){
-    
+    return {
+      
+    }
   }
 }
 </script>
