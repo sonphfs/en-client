@@ -13,7 +13,7 @@
       </div>
       <div class="row mb-5 align-items-center">
         <div class="col-lg-7 mb-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-          <img src="./oneschool/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid" />
+          <img src="@/assets/landing_pages/images/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid" />
         </div>
         <div class="col-lg-4 ml-auto aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
           <h2 class="text-black mb-4">We Are Excellent In Education</h2>
@@ -48,7 +48,7 @@
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <img src="./oneschool/undraw_teaching.svg" alt="Image" class="img-fluid" />
+          <img src="@/assets/landing_pages/images/undraw_teaching.svg" alt="Image" class="img-fluid" />
         </div>
         <div
           class="col-lg-4 mr-auto order-2 order-lg-1 aos-init aos-animate"
@@ -83,7 +83,7 @@
 
       <div class="row mb-5 align-items-center">
         <div class="col-lg-7 mb-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-          <img src="./oneschool/undraw_teacher.svg" alt="Image" class="img-fluid" />
+          <img src="@/assets/landing_pages/images/undraw_teacher.svg" alt="Image" class="img-fluid" />
         </div>
         <div class="col-lg-4 ml-auto aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
           <h2 class="text-black mb-4">Education is life</h2>

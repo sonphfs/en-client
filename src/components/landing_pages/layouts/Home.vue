@@ -2,7 +2,7 @@
   <div class="intro-section" id="home-section">
     <div
       class="slide-1"
-      style="background-image: url(&quot;images/hero_1.jpg&quot;); background-position: 50% 3453px;"
+      style="background-image: url(&quot;https://colorlib.com/preview/theme/oneschool/images/hero_1.jpg&quot;); background-position: 50% 3453px;"
       data-stellar-background-ratio="0.5"
     >
       <div class="container">
@@ -21,7 +21,7 @@
                 </p>
                 <p data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate">
                   <a
-                    href="http://127.0.0.1:5500/templates/Oneschool/index.html#"
+                    href="#"
                     class="btn btn-primary py-3 px-5 btn-pill"
                   >Admission Now</a>
                 </p>

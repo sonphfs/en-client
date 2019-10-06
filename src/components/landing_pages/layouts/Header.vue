@@ -3,12 +3,12 @@
     <header
       class="site-navbar py-4 js-sticky-header site-navbar-target shrink"
       role="banner"
-      style="width: 1519.2px; position: fixed; top: 0px; z-index: inherit;"
+      style="width: 100%; position: fixed; top: 0px; z-index: inherit;"
     >
       <div class="container-fluid">
         <div class="d-flex align-items-center">
           <div class="site-logo mr-auto w-25">
-            <a href="http://127.0.0.1:5500/templates/Oneschool/index.html">OneSchool</a>
+            <a href="#">EN-C</a>
           </div>
 
           <div class="mx-auto text-center">
@@ -16,25 +16,25 @@
               <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block m-0 p-0">
                 <li>
                   <a
-                    href="http://127.0.0.1:5500/templates/Oneschool/index.html#home-section"
+                    href="#home-section"
                     class="nav-link"
                   >Home</a>
                 </li>
                 <li>
                   <a
-                    href="http://127.0.0.1:5500/templates/Oneschool/index.html#courses-section"
+                    href="#courses-section"
                     class="nav-link"
                   >Courses</a>
                 </li>
                 <li>
                   <a
-                    href="http://127.0.0.1:5500/templates/Oneschool/index.html#programs-section"
+                    href="#programs-section"
                     class="nav-link"
                   >Programs</a>
                 </li>
                 <li>
                   <a
-                    href="http://127.0.0.1:5500/templates/Oneschool/index.html#teachers-section"
+                    href="#teachers-section"
                     class="nav-link"
                   >Teachers</a>
                 </li>
@@ -49,7 +49,7 @@
               >
                 <li class="cta">
                   <a
-                    href="http://127.0.0.1:5500/templates/Oneschool/index.html#contact-section"
+                    href="#contact-section"
                     class="nav-link"
                   >
                     <span>Contact Us</span>
@@ -58,7 +58,7 @@
               </ul>
             </nav>
             <a
-              href="http://127.0.0.1:5500/templates/Oneschool/index.html#"
+              href="#"
               class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"
             >
               <span class="icon-menu h3"></span>

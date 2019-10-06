@@ -20,6 +20,11 @@ import Teachers from './layouts/Teachers.vue'
 import Programs from './layouts/Programs.vue'
 import Contact from './layouts/Contact.vue'
 
+import '@/assets/landing_pages/css/reset.css'
+import '@/assets/landing_pages/fonts/icomoon/style.css'
+import '@/assets/landing_pages/css/bootstrap.min.css'
+import '@/assets/landing_pages/css/style.css'
+
 export default {
     name: "LandingPage",
     components: {

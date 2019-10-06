@@ -24,7 +24,7 @@
         >
           <div class="teacher text-center">
             <img
-              src="./oneschool/person_1.jpg"
+              src="@/assets/landing_pages/images/person_1.jpg"
               alt="Image"
               class="img-fluid w-50 rounded-circle mx-auto mb-4"
             />
@@ -46,7 +46,7 @@
         >
           <div class="teacher text-center">
             <img
-              src="./oneschool/person_2.jpg"
+              src="@/assets/landing_pages/images/person_2.jpg"
               alt="Image"
               class="img-fluid w-50 rounded-circle mx-auto mb-4"
             />
@@ -68,7 +68,7 @@
         >
           <div class="teacher text-center">
             <img
-              src="./oneschool/person_3.jpg"
+              src="@/assets/landing_pages/images/person_3.jpg"
               alt="Image"
               class="img-fluid w-50 rounded-circle mx-auto mb-4"
             />
