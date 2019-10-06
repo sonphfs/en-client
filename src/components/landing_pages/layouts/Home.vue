@@ -39,6 +39,9 @@
                 >
                   <h3 class="h4 text-black mb-4">Sign Up</h3>
                   <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Use Name" />
+                  </div>
+                  <div class="form-group">
                     <input type="text" class="form-control" placeholder="Email Addresss" />
                   </div>
                   <div class="form-group">
