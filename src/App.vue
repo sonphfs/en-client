@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container-scroller" v-show="!isHomePage">
+    <div class="container-scroller" v-if="!isHomePage()">
       <Header></Header>
       <Content></Content>
     </div>
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     isHomePage: function() {
-      return this.$router.currentRoute.fullPath == "/home";
+      return this.$router.currentRoute.fullPath == "/";
     }
   }
 };

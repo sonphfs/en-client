@@ -41,3 +41,6 @@ export default {
   }
 };
 </script>
+
+<style scoped src="@/assets/landing_pages/css/index.css">
+</style>
