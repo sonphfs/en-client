@@ -18,8 +18,8 @@ import "@/assets/style/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css";
 import "@/assets/style/vendors/css/vendor.bundle.base.css";
 import "@/assets/style/vendors/css/vendor.bundle.addons.css";
 
-import Header from "./components/Header.vue";
-import Content from "./components/Content.vue";
+import Header from "@/components/layouts/Header.vue";
+import Content from "@/components/layouts/Content.vue";
 export default {
   name: "app",
   components: {
