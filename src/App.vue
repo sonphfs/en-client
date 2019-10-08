@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <div class="container-scroller" v-if="!isHomePage()">
-      <Header></Header>
-      <Content></Content>
-    </div>
-    <router-view></router-view>
+    <component :is="layout"></component>
   </div>
 </template>
 
@@ -18,17 +14,11 @@ import "@/assets/style/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css";
 import "@/assets/style/vendors/css/vendor.bundle.base.css";
 import "@/assets/style/vendors/css/vendor.bundle.addons.css";
 
-import Header from "@/components/layouts/Header.vue";
-import Content from "@/components/layouts/Content.vue";
 export default {
   name: "app",
-  components: {
-    Header,
-    Content
-  },
-  methods: {
-    isHomePage: function() {
-      return this.$router.currentRoute.fullPath == "/";
+  computed: {
+    layout() {
+      return this.$route.meta.layout
     }
   }
 };
