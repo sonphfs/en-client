@@ -6,6 +6,7 @@
       class="form-box"
     >
       <h3 class="h4 text-black mb-4">Sign Up</h3>
+      <h3 class="h4 text-black mb-4"> {{ token }}</h3>
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Use Name" />
       </div>
@@ -26,11 +27,31 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "SignupForm",
   data(){
     return {
-      
+      email : '',
+      username: '',
+      password: '',
+      password_confirmation: '',
+      token: ''
+    }
+  },
+  methods: {
+    register() {
+        axios
+        .post('http://127.0.0.1:8000/api/v1/signup/', {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation
+        })
+        .then(res => {this.token = res})
+        .catch(err => {
+          console.log(err.response)
+        })
     }
   }
 }
