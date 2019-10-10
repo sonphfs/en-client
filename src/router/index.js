@@ -31,6 +31,13 @@ const routes = [
         meta : {
             layout: Login
         }
+    },
+    {
+        path: '/result',
+        component: () => import("@/components/pages/ExaminationResult"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 
