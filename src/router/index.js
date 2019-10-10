@@ -38,6 +38,13 @@ const routes = [
         meta : {
             layout: MainLayout
         }
+    },
+    {
+        path: '/list-exam',
+        component: () => import("@/components/pages/ListExamination"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 
