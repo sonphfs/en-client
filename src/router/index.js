@@ -60,6 +60,23 @@ const routes = [
             layout: MainLayout
         }
     },
+    {
+        path: '/exam',
+        component: () => import("@/components/pages/Examination"),
+        meta : {
+            layout: MainLayout
+        },
+        children: [
+            {
+                path: '/part1',
+                component: () => import("@/components/examinations/Part1Component"),
+            },
+            {
+                path: '/part2',
+                component: () => import("@/components/examinations/Part2Component"),
+            },
+        ]
+    },
 ];
 
 export default new VueRouter({
