@@ -53,6 +53,13 @@ const routes = [
             layout: MainLayout
         }
     },
+    {
+        path: '/start-exam',
+        component: () => import("@/components/pages/StartExamination"),
+        meta : {
+            layout: MainLayout
+        }
+    },
 ];
 
 export default new VueRouter({
