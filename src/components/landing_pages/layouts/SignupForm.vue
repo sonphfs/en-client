@@ -49,7 +49,7 @@ export default {
         password_confirmation: this.password_confirmation
       };
       request({
-        url: "http://127.0.0.1:8001/api/v1/signup",
+        url: "/signup",
         method: "post",
         data
       })

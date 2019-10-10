@@ -2,10 +2,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import LandingPage from '@/components/landing_pages/Index.vue'
-import Dashboard from '@/components/pages/DemoComponent.vue'
+// import layouts
 import MainLayout from "@/components/main_layouts/MainLayout";
 import BlankLayout from "@/components/main_layouts/BlankLayout";
+
+// import pages
+import LandingPage from '@/components/landing_pages/Index.vue'
+import Dashboard from '@/components/pages/DemoComponent.vue'
+import Login from "@/components/pages/Login";
 
 const routes = [
     {
@@ -20,6 +24,12 @@ const routes = [
         component: Dashboard,
         meta : {
             layout: MainLayout
+        }
+    },
+    {
+        path: '/login',
+        meta : {
+            layout: Login
         }
     }
 ];
