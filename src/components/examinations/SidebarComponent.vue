@@ -51,7 +51,8 @@
               </ul>
             </div>
             <p></p>
-            <p>Time left: 1:30:15s</p>
+            <p>Time left: {{hours}} giờ: {{minutes}} phút: {{seconds}} giây</p>
+            
           </div>
         </div>
       </div>
@@ -61,6 +62,27 @@
 
 <script>
 export default {
-  name: "SidebarComponent"
+  name: "SidebarComponent",
+  data() {
+    return {
+      testTime: 2 * 60 * 60,
+      hours: 2,
+      minutes: 0,
+      seconds: 0
+    };
+  },
+  methods: {
+    countdownTimeStart() {
+      setInterval(() => {
+        this.hours = Math.round(this.testTime / 3600)
+        this.minutes = Math.round((this.testTime % 3600) / 60)
+        this.seconds = (this.testTime % 3600) % 60
+        this.testTime--
+      }, 1000);
+    }
+  },
+  created() {
+    this.countdownTimeStart();
+  }
 };
 </script>

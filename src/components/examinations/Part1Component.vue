@@ -20,7 +20,7 @@
         </p>
         <p>Statement (C), "They're standing near the table," is the best description of the picture, so you should select answer (C) and mark it on your answer sheet.</p>
         <hr />
-        <Question></Question>
+        <Question v-for="question in questions" :data="question" v-if="question.part == 1"></Question>
         <hr />
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
@@ -35,9 +35,15 @@
 </template>
 
 <script>
-import Question from '@/components/questions/QuestionPart1Component'
+import Question from "@/components/questions/QuestionPart1Component";
 export default {
   name: "Part1Component",
+  props: ["questions"],
+  data() {
+    return {
+      part: []
+    };
+  },
   components: {
     Question
   }

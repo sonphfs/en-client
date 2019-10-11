@@ -68,15 +68,57 @@ const routes = [
         },
         children: [
             {
-                path: '/part1',
+                path: 'part?id=1',
                 component: () => import("@/components/examinations/Part1Component"),
+                meta : {
+                    layout: MainLayout
+                },
             },
             {
-                path: '/part2',
+                path: 'part/2',
                 component: () => import("@/components/examinations/Part2Component"),
+                meta : {
+                    layout: MainLayout
+                },
+            },
+            {
+                path: 'part/3',
+                component: () => import("@/components/examinations/Part3Component"),
+                meta : {
+                    layout: MainLayout
+                },
+            },
+            {
+                path: 'part/4',
+                component: () => import("@/components/examinations/Part4Component"),
+                meta : {
+                    layout: MainLayout
+                },
+            },
+            {
+                path: 'part/5',
+                component: () => import("@/components/examinations/Part5Component"),
+                meta : {
+                    layout: MainLayout
+                },
+            },
+            {
+                path: 'part/6',
+                component: () => import("@/components/examinations/Part6Component"),
+                meta : {
+                    layout: MainLayout
+                },
+            },
+            {
+                path: 'part/7',
+                component: () => import("@/components/examinations/Part7Component"),
+                meta : {
+                    layout: MainLayout
+                },
             },
         ]
     },
+
 ];
 
 export default new VueRouter({
