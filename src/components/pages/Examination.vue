@@ -1,6 +1,10 @@
 <template>
   <div class="row">
-    <component :is="loadPart" :questions="this.partData"></component>
+    <component
+      :is="loadPart"
+      :questions="this.partData"
+      @resultReceivedFromPart="receiveQuestionLogs"
+    ></component>
     <SidebarComponent></SidebarComponent>
   </div>
 </template>
@@ -25,7 +29,8 @@ export default {
     return {
       examination: [],
       part: this.$route.params.num,
-      partData: []
+      partData: [],
+      result: []
     };
   },
   computed: {
@@ -39,11 +44,17 @@ export default {
         "@/components/examinations/Part" + this.part + "Component"
       );
     },
-    loadData() {
-      let data = this.examination.questions.filter(element => {
-        return (element.part = this.$route.params.num);
-      });
-      return data;
+    receiveQuestionLogs(result) {
+      let resultData = this.result;
+      this.result = resultData.filter(element => {
+          result.filter(item => {
+            if(element.question_id == item.question_id) {
+              return item.question_id
+            }
+            return element.question_id
+          })
+      })
+      this.result = result;
     }
   },
   created() {

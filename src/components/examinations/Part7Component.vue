@@ -7,7 +7,11 @@
           <strong>Directions:</strong> In this part, you will read a selection of texts, such as magazine and newspaper articles, letters, and advertisements. Each text is followed by several questions. Select the best answer for each question.
         </p>
         <hr />
-        <Question></Question>
+        <Question
+          v-for="question in questions"
+          :question="question"
+          v-on:sendAnswerToPart="getAnswer"
+        ></Question>
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
             <li class="page-item">
@@ -21,11 +25,37 @@
 </template>
 
 <script>
-import Question from '@/components/questions/QuestionPart7Component.vue'
+import Question from "@/components/questions/QuestionPart7Component.vue";
 export default {
-  name : "Part7",
+  name: "Part7",
+  props: ["questions"],
+  data() {
+    return {
+      result: []
+    };
+  },
   components: {
     Question
+  },
+  methods: {
+    getAnswer(result) {
+      var resultData = this.result;
+      this.result = resultData.filter(e => {
+        return e.question_id != result.question_id;
+      });
+      this.result.push(result);
+    },
+    sendAnswersQuestionToExam() {
+      this.$emit("resultReceivedFromPart", this.result);
+    }
+  },
+  watch: {
+    result: {
+      deep: true,
+      handler() {
+        this.sendAnswersQuestionToExam();
+      }
+    }
   }
-}
+};
 </script>

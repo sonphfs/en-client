@@ -1,18 +1,36 @@
 <template>
   <div>
-    <h5>{{data.no}}. {{data.content}}</h5>
+    <h5>{{question.no}}. {{ question.content }}</h5>
     <div class="answer">
       <div class="r0">
-        <input type="radio" name="q15251:3_sub1_answer" value="0" id="q15251:3_sub1_answer0" />
-        <label for="q15251:3_sub1_answer0">(A) {{q.A}}</label>
+        <input
+          type="radio"
+          v-bind:name="question.id"
+          v-model="result.choose"
+          value="A"
+          id="q15251:3_sub1_answer0"
+        />
+        <label v-bind:for="question.id">(A)</label>
       </div>
       <div class="r1">
-        <input type="radio" name="q15251:3_sub1_answer" value="1" id="q15251:3_sub1_answer1" />
-        <label for="q15251:3_sub1_answer1">(B) {{q.B}}</label>
+        <input
+          type="radio"
+          v-bind:name="question.id"
+          v-model="result.choose"
+          value="B"
+          id="q15251:3_sub1_answer1"
+        />
+        <label v-bind:for="question.id">(B)</label>
       </div>
       <div class="r0">
-        <input type="radio" name="q15251:3_sub1_answer" value="2" id="q15251:3_sub1_answer2" />
-        <label for="q15251:3_sub1_answer2">(C) {{q.C}}</label>
+        <input
+          type="radio"
+          v-bind:name="question.id"
+          v-model="result.choose"
+          value="C"
+          id="q15251:3_sub1_answer2"
+        />
+        <label v-bind:for="question.id">(C)</label>
       </div>
     </div>
     <p></p>
@@ -22,15 +40,24 @@
 <script>
 export default {
   name: "QuestionPart2",
-  props: ['data'],
+  props: ["question"],
   data() {
     return {
-      q: this.getAnswerData(this.data.data)
+      result: { question_id: this.question.id, choose: "" }
     };
   },
   methods: {
-    getAnswerData() {
-      return JSON.parse(this.data.data);
+    sendAnswerToPart() {
+      this.$emit("sendAnswerToPart", this.result);
+      console.log("sendAnswerToPart");
+    }
+  },
+  watch: {
+    result: {
+      deep: true,
+      handler() {
+        this.sendAnswerToPart();
+      }
     }
   }
 };

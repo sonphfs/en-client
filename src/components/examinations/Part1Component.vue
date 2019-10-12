@@ -20,7 +20,11 @@
         </p>
         <p>Statement (C), "They're standing near the table," is the best description of the picture, so you should select answer (C) and mark it on your answer sheet.</p>
         <hr />
-        <Question v-for="question in questions" :data="question" v-if="question.part == 1"></Question>
+        <Question
+          v-for="question in questions"
+          :question="question"
+          v-on:sendAnswerToPart="getAnswer"
+        ></Question>
         <hr />
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
@@ -41,11 +45,31 @@ export default {
   props: ["questions"],
   data() {
     return {
-      part: []
+      result: []
     };
   },
   components: {
     Question
+  },
+  methods: {
+    getAnswer(result) {
+      var resultData = this.result;
+      this.result = resultData.filter(e => {
+        return e.question_id != result.question_id;
+      });
+      this.result.push(result);
+    },
+    sendAnswersQuestionToExam() {
+      this.$emit("resultReceivedFromPart", this.result);
+    }
+  },
+  watch: {
+    result: {
+      deep: true,
+      handler() {
+        this.sendAnswersQuestionToExam();
+      }
+    }
   }
 };
 </script>

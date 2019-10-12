@@ -8,7 +8,11 @@
         </p>
         <hr />
         <p></p>
-        <Question v-for="question in questions" :data="question"></Question>
+        <Question
+          v-for="question in questions"
+          :question="question"
+          v-on:sendAnswerToPart="getAnswer"
+        ></Question>
         <hr />
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
@@ -23,12 +27,37 @@
 </template>
 
 <script>
-import Question from '@/components/questions/QuestionPart3Component.vue'
+import Question from "@/components/questions/QuestionPart3Component.vue";
 export default {
-    name: "Part3",
-    props: ['questions'],
-    components: {
-        Question
+  name: "Part3",
+  props: ["questions"],
+  data() {
+    return {
+      result: []
+    };
+  },
+  components: {
+    Question
+  },
+  methods: {
+    getAnswer(result) {
+      var resultData = this.result;
+      this.result = resultData.filter(e => {
+        return e.question_id != result.question_id;
+      });
+      this.result.push(result);
+    },
+    sendAnswersQuestionToExam() {
+      this.$emit("resultReceivedFromPart", this.result);
     }
-}
+  },
+  watch: {
+    result: {
+      deep: true,
+      handler() {
+        this.sendAnswersQuestionToExam();
+      }
+    }
+  }
+};
 </script>

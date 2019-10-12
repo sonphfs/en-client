@@ -22,7 +22,11 @@
         <p>The best response to the question "What are you doing?" is choice (B), "I am looking for something," so (B) is the correct answer. You should mark answer (B) on you answer sheet.</p>
         <hr />
         <p></p>
-        <Question v-for="question in questions" :data="question"></Question>
+        <Question
+          v-for="question in questions"
+          :question="question"
+          v-on:sendAnswerToPart="getAnswer"
+        ></Question>
         <hr />
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
@@ -37,12 +41,37 @@
 </template>
 
 <script>
-import Question from "@/components/questions/QuestionPart2Component.vue"
+import Question from "@/components/questions/QuestionPart2Component.vue";
 export default {
   name: "Part2Component",
-  props: ['questions'],
+  props: ["questions"],
+  data() {
+    return {
+      result: []
+    };
+  },
   components: {
     Question
+  },
+  methods: {
+    getAnswer(result) {
+      var resultData = this.result;
+      this.result = resultData.filter(e => {
+        return e.question_id != result.question_id;
+      });
+      this.result.push(result);
+    },
+    sendAnswersQuestionToExam() {
+      this.$emit("resultReceivedFromPart", this.result);
+    }
+  },
+  watch: {
+    result: {
+      deep: true,
+      handler() {
+        this.sendAnswersQuestionToExam();
+      }
+    }
   }
-}
+};
 </script>
