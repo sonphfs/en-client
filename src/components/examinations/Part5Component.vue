@@ -8,7 +8,7 @@
         </p>
         <hr />
         <p></p>
-        <Question></Question>
+        <Question v-for="question in questions" :data="question"></Question>
         <hr />
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
@@ -26,6 +26,7 @@
 import Question from '@/components/questions/QuestionPart5Component.vue'
 export default {
   name : "Part5",
+  props: ['questions'],
   components: {
     Question
   }

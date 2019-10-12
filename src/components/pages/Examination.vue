@@ -1,56 +1,66 @@
 <template>
   <div class="row">
-    <!-- <Part1Component :questions="this.questions"></Part1Component> -->
-    <router-view :key="key" :questions="filterQuestionsByPart(this.$route.params.id)"/>
+    <component :is="loadPart" :questions="this.partData"></component>
     <SidebarComponent></SidebarComponent>
   </div>
 </template>
 
 <script>
-
-import request from '@/utils/request';
-import Part1Component from "@/components/examinations/Part1Component";
+import request from "@/utils/request";
+import Part1 from "@/components/examinations/Part1Component";
+import Part2 from "@/components/examinations/Part2Component";
+import Part3 from "@/components/examinations/Part3Component";
+import Part4 from "@/components/examinations/Part4Component";
+import Part5 from "@/components/examinations/Part5Component";
+import Part6 from "@/components/examinations/Part6Component";
+import Part7 from "@/components/examinations/Part7Component";
 import SidebarComponent from "@/components/examinations/SidebarComponent";
 export default {
   name: "Examination",
   components: {
-    Part1Component,
+    Part: () => loadPart(),
     SidebarComponent
   },
   data() {
     return {
       examination: [],
-      questions: []
-      
-    }
+      part: this.$route.params.num,
+      partData: []
+    };
   },
   computed: {
     key() {
-      return this.$route.fullPath
+      return this.$route.fullPath;
     }
   },
   methods: {
-    filterQuestionsByPart(part){
-       let d = this.questions.filter(element => {
-         console.log(part)
-          return element.part = part
-       });
-       return this.questions;
+    loadPart() {
+      return System.import(
+        "@/components/examinations/Part" + this.part + "Component"
+      );
+    },
+    loadData() {
+      let data = this.examination.questions.filter(element => {
+        return (element.part = this.$route.params.num);
+      });
+      return data;
     }
   },
   created() {
     request({
-          url: '/get-exam',
-          method: 'get',
-        })
-        .then(res => {
-          console.log(res.data);
-          this.examination = res.data;
-          this.questions = this.examination.questions
-        })
-        .catch(err => {
-          console.log(err.res);
-        })
+      url: "/get-exam",
+      method: "get"
+    })
+      .then(res => {
+        console.log(res.data);
+        this.examination = res.data;
+        this.partData = this.examination.questions.filter(element => {
+          return element.part == this.$route.params.num;
+        });
+      })
+      .catch(err => {
+        console.log(err.res);
+      });
   }
 };
 </script>
