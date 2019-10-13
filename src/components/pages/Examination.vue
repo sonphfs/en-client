@@ -30,7 +30,7 @@ export default {
       examination: [],
       part: this.$route.params.num,
       partData: [],
-      result: []
+      result: localStorage.getItem('result') != null ? JSON.parse(localStorage.getItem('result')) : []
     };
   },
   computed: {
@@ -45,15 +45,6 @@ export default {
       );
     },
     receiveQuestionLogs(result) {
-      let resultData = this.result;
-      this.result = resultData.filter(element => {
-          result.filter(item => {
-            if(element.question_id == item.question_id) {
-              return item.question_id
-            }
-            return element.question_id
-          })
-      })
       this.result = result;
     }
   },

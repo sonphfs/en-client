@@ -33,7 +33,7 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result: localStorage.getItem('result_part4') != null ? JSON.parse(localStorage.getItem('result_part4')) : []
+      result: localStorage.getItem('result') != null ? JSON.parse(localStorage.getItem('result')) : []
     };
   },
   components: {
@@ -46,7 +46,7 @@ export default {
         return e.question_id != result.question_id;
       });
       this.result.push(result);
-      localStorage.setItem('result_part4', JSON.stringify(this.result))
+      localStorage.setItem('result', JSON.stringify(this.result))
     },
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);

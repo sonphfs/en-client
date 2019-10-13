@@ -47,7 +47,7 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result: JSON.parse(localStorage.getItem('result_part2'))
+      result: JSON.parse(localStorage.getItem('result'))
     };
   },
   components: {
