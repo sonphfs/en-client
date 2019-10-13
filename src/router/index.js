@@ -76,6 +76,13 @@ const routes = [
             }
         ]
     },
+    {
+        path: '/chart',
+        component: () => import("@/components/Visualisation"),
+        meta : {
+            layout: MainLayout
+        },
+    }
 
 ];
 
