@@ -30,7 +30,6 @@ export default {
       examination: [],
       part: this.$route.params.num,
       partData: [],
-      result: localStorage.getItem('result') != null ? JSON.parse(localStorage.getItem('result')) : []
     };
   },
   computed: {
@@ -45,7 +44,6 @@ export default {
       );
     },
     receiveQuestionLogs(result) {
-      this.result = result;
     }
   },
   created() {

@@ -7,7 +7,7 @@ Vue.config.productionTip = false
 
 const token = localStorage.getItem('token')
 if(token) {
-  request.defaults.headers.common['Authorization'] = token
+  request.defaults.headers.common['Authorization'] = 'Bearer '+ token
 }
 
 new Vue({

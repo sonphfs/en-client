@@ -15,7 +15,7 @@
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
             <li class="page-item">
-              <a class="page-link" href="#">Next</a>
+              <button class="btn btn-primary" @click="submitExam">NỘP BÀI</button>
             </li>
           </ul>
         </nav>
@@ -25,13 +25,18 @@
 </template>
 
 <script>
+import request from "@/utils/request";
+
 import Question from "@/components/questions/QuestionPart7Component.vue";
 export default {
   name: "Part7",
   props: ["questions"],
   data() {
     return {
-      result: JSON.parse(localStorage.getItem('result_part7'))
+      result:
+        localStorage.getItem("result_reading") != null
+          ? JSON.parse(localStorage.getItem("result_reading"))
+          : []
     };
   },
   components: {
@@ -44,10 +49,30 @@ export default {
         return e.question_id != result.question_id;
       });
       this.result.push(result);
-      localStorage.setItem('result_part7', JSON.stringify(this.result))
+      localStorage.setItem("result_reading", JSON.stringify(this.result));
     },
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);
+    },
+    submitExam() {
+      let data = {
+        listening_questions: JSON.parse(localStorage.getItem("result_listening")),
+        reading_questions: JSON.parse(localStorage.getItem("result_reading")),
+        examination_id: this.$route.params.code
+      };
+      console.log(data);
+      request({
+        url: "/submit-examination",
+        method: "post",
+        data
+      })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      console.log(data);
     }
   },
   watch: {
