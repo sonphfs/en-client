@@ -4,7 +4,7 @@
         <div class="container-fluid page-body-wrapper">
             <MenuSide></MenuSide>
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper" style="width: 500px">
                     <router-view></router-view>
                 </div>
                 <Footer></Footer>

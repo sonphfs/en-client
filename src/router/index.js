@@ -73,9 +73,18 @@ const routes = [
                 meta : {
                     layout: MainLayout
                 },
-            }
+            },
+            
         ]
     },
+    {
+        path: '/chart',
+        component: () => import("@/components/Visualisation"),
+        meta : {
+            layout: MainLayout
+        }
+    }
+    
 
 ];
 
