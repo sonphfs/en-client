@@ -16,29 +16,29 @@
           <nav aria-label="...">
             <ul class="pagination pagination-lg">
               <li class="page-item">
-                <a href="toeic_part_1.html" tabindex="-1" class="page-link">1</a>
+                <a href="1" tabindex="-1" class="page-link">1</a>
               </li>
               <li class="page-item disabled">
-                <a href="toeic_part_2.html" class="page-link">2</a>
+                <a href="2" class="page-link">2</a>
               </li>
               <li class="page-item">
-                <a href="toeic_part_3.html" class="page-link">3</a>
+                <a href="3" class="page-link">3</a>
               </li>
               <li class="page-item">
-                <a href="toeic_part_4.html" class="page-link">4</a>
+                <a href="4" class="page-link">4</a>
               </li>
             </ul>
           </nav>
           <nav aria-label="...">
             <ul class="pagination pagination-lg">
               <li class="page-item">
-                <a href="toeic_part_5.html" class="page-link">5</a>
+                <a href="" class="page-link">5</a>
               </li>
               <li class="page-item">
-                <a href="toeic_part_6.html" class="page-link">6</a>
+                <a href="6" class="page-link">6</a>
               </li>
               <li class="page-item">
-                <a href="toeic_part_7.html" class="page-link">7</a>
+                <a href="7" class="page-link">7</a>
               </li>
             </ul>
           </nav>
