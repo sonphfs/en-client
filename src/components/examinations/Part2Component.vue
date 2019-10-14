@@ -31,7 +31,7 @@
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
             <li class="page-item">
-              <a class="page-link" href="#">Next</a>
+              <a class="page-link" @click="nextStep" style="color: #007BFF">Next</a>
             </li>
           </ul>
         </nav>
@@ -41,13 +41,13 @@
 </template>
 
 <script>
-import Question from "@/components/questions/QuestionPart2Component.vue";
+import Question from "@/components/questions/QuestionPart1Component.vue";
 export default {
   name: "Part2Component",
-  props: ["questions"],
+  props: ['questions'],
   data() {
     return {
-      result: localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : []
+      result: localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : [],
     };
   },
   components: {
@@ -64,6 +64,9 @@ export default {
     },
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);
+    },
+    nextStep() {
+      this.$emit('nextStep', 3)
     }
   },
   watch: {

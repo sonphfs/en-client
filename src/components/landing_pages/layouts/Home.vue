@@ -15,9 +15,7 @@
                   The Expert
                 </h1>
                 <p class="mb-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                  Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis
-                  rerum amet natus quas necessitatibus.
+                  <!-- // TODO -->
                 </p>
                 <p data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate">
                   <a href="#" class="btn btn-primary py-3 px-5 btn-pill">Admission Now</a>

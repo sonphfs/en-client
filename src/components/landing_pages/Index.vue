@@ -2,7 +2,7 @@
   <div>
     <Header></Header>
     <Home></Home>
-    <Courses></Courses>
+    <!-- <Courses></Courses> -->
     <Teachers></Teachers>
     <Programs></Programs>
     <Contact></Contact>

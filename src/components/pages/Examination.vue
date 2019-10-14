@@ -1,11 +1,13 @@
 <template>
   <div class="row">
-    <component
-      :is="loadPart"
-      :questions="this.partData"
-      @resultReceivedFromPart="receiveQuestionLogs"
-    ></component>
-    <SidebarComponent></SidebarComponent>
+    <Part1 :questions="filterQuestionByStep(1)" v-show="step == 1" @nextStep="receiveStep"></Part1>
+    <Part2 :questions="filterQuestionByStep(2)" v-show="step == 2" @nextStep="receiveStep"></Part2>
+    <Part3 :questions="filterQuestionByStep(3)" v-show="step == 3" @nextStep="receiveStep"></Part3>
+    <Part4 :questions="filterQuestionByStep(4)" v-show="step == 4" @nextStep="receiveStep"></Part4>
+    <Part5 :questions="filterQuestionByStep(5)" v-show="step == 5" @nextStep="receiveStep"></Part5>
+    <Part6 :questions="filterQuestionByStep(6)" v-show="step == 6" @nextStep="receiveStep"></Part6>
+    <Part7 :questions="filterQuestionByStep(7)" v-show="step == 7" @nextStep="receiveStep"></Part7>
+    <SidebarComponent :step="this.step" @updateStep="receiveStep" @nextStep="receiveStep"></SidebarComponent>
   </div>
 </template>
 
@@ -22,14 +24,20 @@ import SidebarComponent from "@/components/examinations/SidebarComponent";
 export default {
   name: "Examination",
   components: {
-    Part: () => loadPart(),
+    Part1,
+    Part2,
+    Part3,
+    Part4,
+    Part5,
+    Part6,
+    Part7,
     SidebarComponent
   },
   data() {
     return {
       examination: [],
-      part: this.$route.params.num,
-      partData: [],
+      step: 1,
+      partData: []
     };
   },
   computed: {
@@ -38,12 +46,16 @@ export default {
     }
   },
   methods: {
-    loadPart() {
-      return System.import(
-        "@/components/examinations/Part" + this.part + "Component"
-      );
+    filterQuestionByStep(step) {
+      let questions = this.partData;
+      questions = questions.filter(e => {
+        return e.part == step;
+      });
+      return questions;
     },
-    receiveQuestionLogs(result) {
+    receiveQuestionLogs(result) {},
+    receiveStep(result) {
+      this.step = result;
     }
   },
   created() {
@@ -54,9 +66,7 @@ export default {
       .then(res => {
         console.log(res.data);
         this.examination = res.data;
-        this.partData = this.examination.questions.filter(element => {
-          return element.part == this.$route.params.num;
-        });
+        this.partData = this.examination.questions;
       })
       .catch(err => {
         console.log(err.res);

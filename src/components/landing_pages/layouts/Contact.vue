@@ -3,10 +3,9 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-7">
-          <h2 class="section-title mb-3">Message Us</h2>
+          <h2 class="section-title mb-3">Liên hệ</h2>
           <p class="mb-5">
-            Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia
-            quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.
+            Mọi ý kiến đóng góp, câu hỏi hãy gửi đến chúng tôi
           </p>
 
           <form @submit.prevent="submitContact" class="aos-init aos-animate">
@@ -48,7 +47,7 @@
                 <input
                   type="submit"
                   class="btn btn-primary py-3 px-5 btn-block btn-pill"
-                  value="Send Message"
+                  value="GỬI TIN NHẮN"
                 />
               </div>
             </div>

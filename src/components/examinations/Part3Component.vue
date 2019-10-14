@@ -17,7 +17,7 @@
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
             <li class="page-item">
-              <a class="page-link" href="#">Next</a>
+              <a class="page-link" @click="nextStep" style="color: #007BFF">Next</a>
             </li>
           </ul>
         </nav>
@@ -50,6 +50,9 @@ export default {
     },
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);
+    },
+    nextStep() {
+      this.$emit('nextStep', 4)
     }
   },
   watch: {

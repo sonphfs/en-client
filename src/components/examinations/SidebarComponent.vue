@@ -16,29 +16,29 @@
           <nav aria-label="...">
             <ul class="pagination pagination-lg">
               <li class="page-item">
-                <a href="1" tabindex="-1" class="page-link">1</a>
-              </li>
-              <li class="page-item disabled">
-                <a href="2" class="page-link">2</a>
+                <a @click="changeStep(1)" tabindex="-1" class="page-link">1</a>
               </li>
               <li class="page-item">
-                <a href="3" class="page-link">3</a>
+                <a @click="changeStep(2)" tabindex="-1" class="page-link">2</a>
               </li>
               <li class="page-item">
-                <a href="4" class="page-link">4</a>
+                <a @click="changeStep(3)" tabindex="-1" class="page-link">3</a>
+              </li>
+              <li class="page-item">
+                <a @click="changeStep(4)" tabindex="-1" class="page-link">4</a>
               </li>
             </ul>
           </nav>
           <nav aria-label="...">
             <ul class="pagination pagination-lg">
               <li class="page-item">
-                <a href="" class="page-link">5</a>
+                <a @click="changeStep(5)" tabindex="-1" class="page-link">5</a>
               </li>
               <li class="page-item">
-                <a href="6" class="page-link">6</a>
+                <a @click="changeStep(6)" tabindex="-1" class="page-link">6</a>
               </li>
               <li class="page-item">
-                <a href="7" class="page-link">7</a>
+                <a @click="changeStep(7)" tabindex="-1" class="page-link">7</a>
               </li>
             </ul>
           </nav>
@@ -62,13 +62,14 @@
 <script>
 export default {
   name: "SidebarComponent",
-  props: ["examCode"],
+  props: ["step"],
   data() {
     return {
       testTime: 2 * 60 * 60,
       hours: 2,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+      currentStep: this.step
     };
   },
   methods: {
@@ -79,10 +80,21 @@ export default {
         this.seconds = (this.testTime % 3600) % 60;
         this.testTime--;
       }, 1000);
+    },
+    changeStep(step) {
+      this.currentStep = step;
+    },
+    updateStepToParent() {
+      this.$emit("updateStep", this.currentStep);
     }
   },
   created() {
     this.countdownTimeStart();
+  },
+  watch: {
+    currentStep() {
+      this.updateStepToParent();
+    }
   }
 };
 </script>

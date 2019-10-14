@@ -65,21 +65,11 @@ const routes = [
         component: () => import("@/components/pages/Examination"),
         meta : {
             layout: MainLayout
-        },
-        children: [
-            {
-                path: 'part/:num',
-                component: () => import("@/components/examinations/Part1Component"),
-                meta : {
-                    layout: MainLayout
-                },
-            },
-            
-        ]
+        }
     },
     {
         path: '/chart',
-        component: () => import("@/components/Visualisation"),
+        component: () => import("@/components/charts/ScoreChart"),
         meta : {
             layout: MainLayout
         }
