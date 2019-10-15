@@ -60,12 +60,13 @@
 </template>
 
 <script>
+import request from "@/utils/request";
 export default {
   name: "SidebarComponent",
   props: ["step"],
   data() {
     return {
-      testTime: 2 * 60 * 60,
+      testTime: 2 * 60 * 60 - 1,
       hours: 2,
       minutes: 0,
       seconds: 0,
@@ -75,8 +76,8 @@ export default {
   methods: {
     countdownTimeStart() {
       setInterval(() => {
-        this.hours = Math.round(this.testTime / 3600);
-        this.minutes = Math.round((this.testTime % 3600) / 60);
+        this.hours = Math.floor(this.testTime / 3600);
+        this.minutes = Math.floor((this.testTime % 3600) / 60);
         this.seconds = (this.testTime % 3600) % 60;
         this.testTime--;
       }, 1000);
@@ -94,6 +95,30 @@ export default {
   watch: {
     currentStep() {
       this.updateStepToParent();
+    },
+    testTime() {
+      if (this.testTime === 0) {
+        let data = {
+          listening_questions: JSON.parse(
+            localStorage.getItem("result_listening")
+          ),
+          reading_questions: JSON.parse(localStorage.getItem("result_reading")),
+          examination_id: this.$route.params.code
+        };
+        console.log(data);
+        request({
+          url: "/submit-examination",
+          method: "post",
+          data
+        })
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        console.log(data);
+      }
     }
   }
 };

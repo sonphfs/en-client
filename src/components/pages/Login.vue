@@ -78,6 +78,7 @@
 
 <script>
 import request from "@/utils/request";
+import { setToken} from '@/utils/auth'
 export default {
   name: "Login",
   data() {
@@ -101,7 +102,7 @@ export default {
       })
         .then(res => {
           this.token = res.data.token;
-          localStorage.setItem('token', this.token)
+          setToken(this.token)
         })
         .catch(err =>{
             console.log(err)

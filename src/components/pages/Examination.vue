@@ -60,7 +60,7 @@ export default {
   },
   created() {
     request({
-      url: "/get-exam",
+      url: "/get-exam/" + this.$route.params.code,
       method: "get"
     })
       .then(res => {
