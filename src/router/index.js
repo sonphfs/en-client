@@ -1,6 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
+import { isAuthorized } from '@/permission'
 Vue.use(VueRouter)
+
+const ifAuthenticated = (to, from, next) => {
+    if (isAuthorized) {
+      next()
+      return
+    }
+    next('/login')
+  }
 
 // import layouts
 import MainLayout from "@/components/main_layouts/MainLayout";
@@ -11,13 +20,15 @@ import LandingPage from '@/components/landing_pages/Index.vue'
 import Dashboard from '@/components/pages/DemoComponent.vue'
 import Login from "@/components/pages/Login";
 
+
 const routes = [
     {
         path: '/',
         component: LandingPage,
         meta: {
             layout: BlankLayout
-        }
+        },
+        beforeEnter: ifAuthenticated
     },
     {
         path: '/dashboard',
