@@ -84,9 +84,21 @@ const routes = [
         meta : {
             layout: MainLayout
         }
+    },
+    {
+        path: '/error-404',
+        component: () => import("@/components/error_pages/Error404"),
+        meta : {
+            layout: BlankLayout
+        }
+    },
+    {
+        path: '/error-500',
+        component: () => import("@/components/error_pages/Error500"),
+        meta : {
+            layout: BlankLayout
+        }
     }
-    
-
 ];
 
 export default new VueRouter({
