@@ -77,8 +77,9 @@
 </template>
 
 <script>
-import request from "@/utils/request";
+import request from "@/utils/request"
 import { setToken} from '@/utils/auth'
+import {isAuthorized} from '@/permission'
 export default {
   name: "Login",
   data() {
@@ -89,6 +90,8 @@ export default {
     };
   },
   components: {},
+  created() {
+  },
   methods: {
     login() {
       let data = {
@@ -103,6 +106,7 @@ export default {
         .then(res => {
           this.token = res.data.token;
           setToken(this.token)
+          this.$router.push('/')
         })
         .catch(err =>{
             console.log(err)

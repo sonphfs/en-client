@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row examination">
     <Part1 :questions="filterQuestionByStep(1)" v-show="step == 1" @nextStep="receiveStep"></Part1>
     <Part2 :questions="filterQuestionByStep(2)" v-show="step == 2" @nextStep="receiveStep"></Part2>
     <Part3 :questions="filterQuestionByStep(3)" v-show="step == 3" @nextStep="receiveStep"></Part3>

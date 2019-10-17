@@ -25,6 +25,7 @@ const routes = [
     {
         path: '/',
         component: LandingPage,
+        redirect: 'exam/iSCTwikn',
         meta: {
             layout: BlankLayout
         },

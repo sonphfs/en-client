@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-3 grid-margin stretch-card">
+  <div class="col-md-3 grid-margin stretch-card part-navigation">
     <div class="card" style="max-height: 345px;">
       <div class="card-body d-flex flex-column">
         <div class="chartjs-size-monitor">

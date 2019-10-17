@@ -1,9 +1,59 @@
 <template>
   <div>
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="width: 70%; margin: auto;">
       <Logo></Logo>
       <div class="navbar-menu-wrapper d-flex align-items-center">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
+          <li class="nav-item font-weight-semibold d-none d-lg-block">Help : +050 2992 709</li>
+          <li class="nav-item dropdown language-dropdown">
+            <a
+              class="nav-link dropdown-toggle px-2 d-flex align-items-center"
+              id="LanguageDropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div class="d-inline-flex mr-0 mr-md-3">
+                <div class="flag-icon-holder">
+                  <i class="flag-icon flag-icon-us"></i>
+                </div>
+              </div>
+              <span class="profile-text font-weight-medium d-none d-md-block">English</span>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-left navbar-dropdown py-2"
+              aria-labelledby="LanguageDropdown"
+            >
+              <a class="dropdown-item">
+                <div class="flag-icon-holder">
+                  <i class="flag-icon flag-icon-us"></i>
+                </div>English
+              </a>
+              <a class="dropdown-item">
+                <div class="flag-icon-holder">
+                  <i class="flag-icon flag-icon-fr"></i>
+                </div>French
+              </a>
+              <a class="dropdown-item">
+                <div class="flag-icon-holder">
+                  <i class="flag-icon flag-icon-ae"></i>
+                </div>Arabic
+              </a>
+              <a class="dropdown-item">
+                <div class="flag-icon-holder">
+                  <i class="flag-icon flag-icon-ru"></i>
+                </div>Russian
+              </a>
+            </div>
+          </li>
+        </ul>
+        <form class="ml-auto search-form d-none d-md-block" action="#">
+          <div class="form-group">
+            <input type="search" class="form-control input-search" placeholder="Search Here" />
+          </div>
+        </form>
+        <ul class="navbar-nav ml-auto" v-if="user.email">
           <li class="nav-item dropdown">
             <a
               class="nav-link count-indicator"
@@ -110,7 +160,7 @@
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+          <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown" @click="dave=!dave">
             <a
               class="nav-link dropdown-toggle"
               id="UserDropdown"
@@ -125,7 +175,8 @@
               />
             </a>
             <div
-              class="dropdown-menu dropdown-menu-right navbar-dropdown"
+              class="dropdown-menu dropdown-menu-right navbar-dropdown show"
+              v-show="dave"
               aria-labelledby="UserDropdown"
             >
               <div class="dropdown-header text-center">
@@ -134,8 +185,8 @@
                   src="@/assets/images/faces/face8.jpg"
                   alt="Profile image"
                 />
-                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                <p class="mb-1 mt-3 font-weight-semibold">{{user.username}}</p>
+                <p class="font-weight-light text-muted mb-0">{{user.email}}</p>
               </div>
               <a class="dropdown-item">
                 My Profile
@@ -154,12 +205,16 @@
                 FAQ
                 <i class="dropdown-item-icon ti-help-alt"></i>
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" @click="logout">
                 Sign Out
                 <i class="dropdown-item-icon ti-power-off"></i>
               </a>
             </div>
           </li>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-auth" v-if="!user.email">
+          <a class="main-header-button-auth btn-login" href="/login">Đăng nhập</a>
+          <a class="main-header-button-auth btn-register" href="/">Đăng ký</a>
         </ul>
         <button
           class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
@@ -174,12 +229,69 @@
 </template>
 
 <script>
+import request from "@/utils/request";
+import { removeToken } from "@/utils/auth";
 import Logo from "@/components/layouts/Logo.vue";
 
 export default {
   name: "Header",
-  components:  {
+  props: ["user"],
+  components: {
     Logo
+  },
+  data() {
+    return {
+      dave: false
+    };
+  },
+  methods: {
+    logout() {
+      request({
+        url: "/logout",
+        method: "post"
+      }).then(res => {
+        removeToken();
+        this.$emit("logout", []);
+      });
+    }
   }
 };
 </script>
+
+<style scoped>
+.form-control {
+  display: inline-block;
+  border: 1px solid #dee2e6;
+  font-family: "roboto", sans-serif;
+  font-size: 0.75rem;
+  color: #212529;
+  padding: 0 0.75rem;
+  line-height: 14px;
+  font-weight: 300;
+}
+input.input-search {
+  height: 32px;
+}
+
+a.main-header-button-auth {
+  font-family: opensanssemibold;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+  outline: 0px;
+  width: 110px;
+  height: 30px;
+  line-height: 30px;
+  background: #39c9f6;
+  display: inline-block;
+  text-align: center;
+  border-radius: 15px;
+}
+a.main-header-button-auth:hover {
+  background: #23a6d9;
+}
+
+a.btn-login {
+  margin-right: 5%;
+}
+</style>
