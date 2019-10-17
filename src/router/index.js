@@ -99,6 +99,13 @@ const routes = [
         meta : {
             layout: BlankLayout
         }
+    },
+    {
+        path: '/my-profile',
+        component: () => import("@/components/pages/Profile"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 
