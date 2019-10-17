@@ -106,6 +106,13 @@ const routes = [
         meta : {
             layout: MainLayout
         }
+    },
+    {
+        path: '/list',
+        component: () => import("@/components/pages/ListContent"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 

@@ -188,7 +188,7 @@
                 <p class="mb-1 mt-3 font-weight-semibold">{{user.username}}</p>
                 <p class="font-weight-light text-muted mb-0">{{user.email}}</p>
               </div>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="/my-profile">
                 My Profile
                 <span class="badge badge-pill badge-danger">1</span>
                 <i class="dropdown-item-icon ti-dashboard"></i>
