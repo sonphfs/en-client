@@ -113,6 +113,13 @@ const routes = [
         meta : {
             layout: MainLayout
         }
+    },
+    {
+        path: '/list-subject',
+        component: () => import("@/components/pages/ListSubject"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 
