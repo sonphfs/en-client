@@ -11,10 +11,17 @@
                   aria-controls="personal"
                   role="tab"
                   data-toggle="tab"
+                  @click="isSecurity=false"
                 >Thông tin cá nhân</a>
               </li>
               <li role="presentation">
-                <a href="#security" aria-controls="security" role="tab" data-toggle="tab">Thay đổi mật khẩu</a>
+                <a
+                  href="#security"
+                  aria-controls="security"
+                  role="tab"
+                  data-toggle="tab"
+                  @click="isSecurity=true"
+                >Thay đổi mật khẩu</a>
               </li>
             </ul>
           </div>
@@ -24,7 +31,7 @@
     <div class="col-md-9 grid-margin">
       <div class="card">
         <div class="card-body d-flex flex-column">
-          <div class="infos" v-show="false">
+          <div class="infos" v-show="!isSecurity">
             <div class="avatar">
               <img
                 alt="avatar"
@@ -35,72 +42,85 @@
               </span>
             </div>
             <div class="user-info">
-              <form action>
-                <form class="forms-sample">
-                  <div class="form-group">
-                    <label for="Enter username">Tên</label>
-                    <input
-                      type="username"
-                      class="form-control"
-                      id="username"
-                      placeholder="username"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="email" class="form-control" id="Email" placeholder="Enter email" />
-                  </div>
-                  <div class="form-group">
-                    <label for="Phone">Số điện thoại</label>
-                    <input type="phone" class="form-control" id="Phone" placeholder="Enter Phone" />
-                  </div>
-                  <div class="form-group">
-                    <label for="address">Địa chỉ</label>
-                    <input
-                      type="address"
-                      class="form-control"
-                      id="address"
-                      placeholder="Enter address"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-success mr-2">Lưu thay đổi</button>
-                </form>
+              <form class="forms-sample" @submit.prevent="updateProfile()">
+                <div class="form-group">
+                  <label for="Enter username">Tên</label>
+                  <input
+                    type="username"
+                    class="form-control"
+                    id="username"
+                    placeholder="username"
+                    v-model="userInfos.username"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="Email"
+                    placeholder="Enter email"
+                    v-model="userInfos.email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Phone">Số điện thoại</label>
+                  <input
+                    type="phone"
+                    class="form-control"
+                    id="Phone"
+                    placeholder="Enter Phone"
+                    v-model="userInfos.phone"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address">Địa chỉ</label>
+                  <input
+                    type="address"
+                    class="form-control"
+                    id="address"
+                    placeholder="Enter address"
+                    v-model="userInfos.address"
+                  />
+                </div>
+                <button type="submit" class="btn btn-success mr-2">Lưu thay đổi</button>
               </form>
             </div>
           </div>
-          <div class="change-password" v-show="true">
-              <form action>
-                <form class="forms-sample">
-                  <div class="form-group">
-                    <label for="Enter Email">Email</label>
-                    <input
-                      type="Email"
-                      class="form-control"
-                      id="Email"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Mật khẩu cũ</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter password" />
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Mât khẩu mới</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter password" />
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Nhập lại mật khẩu mới</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password"
-                      placeholder="Enter password"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-success mr-2">Lưu thay đổi</button>
-                </form>
+          <div class="change-password" v-show="isSecurity">
+            <form action>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label for="password">Mật khẩu cũ</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Mât khẩu mới</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Nhập lại mật khẩu mới</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter password"
+                  />
+                </div>
+                <button type="submit" class="btn btn-success mr-2">Lưu thay đổi</button>
               </form>
-            </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -108,8 +128,49 @@
 </template>
 
 <script>
+import request from "@/utils/request";
 export default {
-  name: "Profile"
+  name: "Profile",
+  data() {
+    return {
+      isSecurity: false,
+      userInfos: { username: "", email: "", phone: "", address: "" },
+      changePassword: {
+        currentPassword: "",
+        newPassword: "",
+        password_comfimation: ""
+      }
+    };
+  },
+  methods: {
+    isActive() {
+      if (this.isSecurity) return "active";
+    },
+    updateProfile() {
+      let data = this.userInfos;
+      request({
+        url: "/user/update-profile",
+        method: "post",
+        data
+      })
+        .then(res => {
+          if (res.data == true) {
+            alert("Lưu thành công!");
+          }
+        })
+        .catch({});
+    }
+  },
+  created() {
+    request({
+      url: "/auth",
+      method: "get"
+    })
+      .then(res => {
+        this.userInfos = res.data;
+      })
+      .catch({});
+  }
 };
 </script>
 
