@@ -120,6 +120,13 @@ const routes = [
         meta : {
             layout: MainLayout
         }
+    },
+    {
+        path: '/subject/:id',
+        component: () => import("@/components/pages/ListWord"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 
