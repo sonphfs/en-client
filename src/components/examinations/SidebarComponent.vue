@@ -105,19 +105,13 @@ export default {
           reading_questions: JSON.parse(localStorage.getItem("result_reading")),
           examination_id: this.$route.params.code
         };
-        console.log(data);
         request({
           url: "/submit-examination",
           method: "post",
           data
         })
-          .then(res => {
-            console.log(res.data);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-        console.log(data);
+          .then()
+          .catch()
       }
     }
   }

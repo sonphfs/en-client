@@ -115,6 +115,14 @@ const routes = [
         }
     },
     {
+        
+        path: '/lesson-complete',
+        component: () => import("@/components/pages/LessonComplete"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
         path: '/list-subject',
         component: () => import("@/components/pages/ListSubject"),
         meta : {
@@ -124,6 +132,13 @@ const routes = [
     {
         path: '/subject/:id',
         component: () => import("@/components/pages/ListWord"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
+        path: '/test',
+        component: () => import("@/components/pages/Test"),
         meta : {
             layout: MainLayout
         }
