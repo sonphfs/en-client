@@ -1,52 +1,34 @@
 <template>
   <div>
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="width: 70%; margin: auto;">
+    <nav
+      class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+      style="width: 70%; margin: auto;"
+    >
       <Logo></Logo>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav">
-          <li class="nav-item font-weight-semibold d-none d-lg-block">Help : +050 2992 709</li>
-          <li class="nav-item dropdown language-dropdown">
-            <a
-              class="nav-link dropdown-toggle px-2 d-flex align-items-center"
-              id="LanguageDropdown"
-              href="#"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <div class="d-inline-flex mr-0 mr-md-3">
-                <div class="flag-icon-holder">
-                  <i class="flag-icon flag-icon-us"></i>
-                </div>
-              </div>
-              <span class="profile-text font-weight-medium d-none d-md-block">English</span>
-            </a>
-            <div
-              class="dropdown-menu dropdown-menu-left navbar-dropdown py-2"
-              aria-labelledby="LanguageDropdown"
-            >
-              <a class="dropdown-item">
-                <div class="flag-icon-holder">
-                  <i class="flag-icon flag-icon-us"></i>
-                </div>English
-              </a>
-              <a class="dropdown-item">
-                <div class="flag-icon-holder">
-                  <i class="flag-icon flag-icon-fr"></i>
-                </div>French
-              </a>
-              <a class="dropdown-item">
-                <div class="flag-icon-holder">
-                  <i class="flag-icon flag-icon-ae"></i>
-                </div>Arabic
-              </a>
-              <a class="dropdown-item">
-                <div class="flag-icon-holder">
-                  <i class="flag-icon flag-icon-ru"></i>
-                </div>Russian
-              </a>
+          <div class="dropdown" @mouseover="word_active = true" @mouseleave="word_active = false">
+            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Từ vựng</button>
+            <div class="dropdown-menu show" v-show="word_active">
+              <a class="dropdown-item" href="#">Chủ đề</a>
+              <a class="dropdown-item" href="#">Kiểm tra</a>
             </div>
-          </li>
+          </div>
+          <div class="dropdown" @mouseover="grammar_active = true" @mouseleave="grammar_active = false">
+            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Ngữ pháp</button>
+            <div class="dropdown-menu show" v-show="grammar_active">
+              <a class="dropdown-item" href="#">Bài học</a>
+              <a class="dropdown-item" href="#">Kiểm tra</a>
+            </div>
+          </div>
+          <div class="dropdown" @mouseover="test_active = true" @mouseleave="test_active = false">
+            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Thi thử</button>
+            <div class="dropdown-menu show" v-show="test_active">
+              <a class="dropdown-item" href="/list-exam">Thi thử toeic</a>
+              <a class="dropdown-item" href="#">Thi rút gọn</a>
+            </div>
+          </div>
         </ul>
         <form class="ml-auto search-form d-none d-md-block" action="#">
           <div class="form-group">
@@ -160,7 +142,7 @@
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown" @click="dave=!dave">
+          <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown" @mouseover="dave=true" @mouseleave="dave=false">
             <a
               class="nav-link dropdown-toggle"
               id="UserDropdown"
@@ -170,12 +152,12 @@
             >
               <img
                 class="img-xs rounded-circle"
-                src="@/assets/images/faces/face8.jpg"
+                src="https://lh3.googleusercontent.com/a-/AAuE7mAPaAzyOYH-rjrFDVmkBq37JJ2-puZIWDrLVR0yHw"
                 alt="Profile image"
               />
             </a>
             <div
-              class="dropdown-menu dropdown-menu-right navbar-dropdown show"
+              class="dropdown-menu dropdown-menu-right navbar-dropdown show user-dropdown-infos" style="margin-top: 2px;"
               v-show="dave"
               aria-labelledby="UserDropdown"
             >
@@ -241,7 +223,10 @@ export default {
   },
   data() {
     return {
-      dave: false
+      dave: false,
+      word_active: false,
+      grammar_active: false,
+      test_active: false
     };
   },
   methods: {
@@ -253,6 +238,9 @@ export default {
         removeToken();
         this.$emit("logout", []);
       });
+    },
+    mouseOver() {
+      this.active = !this.active;
     }
   }
 };
@@ -294,4 +282,15 @@ a.main-header-button-auth:hover {
 a.btn-login {
   margin-right: 5%;
 }
+
+button.button-menu-top {
+  background-color: #fff;
+  border: none;
+}
+.navbar-nav .dropdown-menu {
+  position: absolute;
+  margin: 0px;
+  bottom: none;
+}
+
 </style>

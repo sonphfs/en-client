@@ -6,21 +6,12 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-2" style="font-weight: bold;">FULL TEST</div>
-              <div class="col-md-1">Category</div>
-              <div class="col-md-2">
-                <select class="custom-select custom-select mb-1">
-                  <option selected>All</option>
-                  <option value="1">ETS</option>
-                  <option value="2">Economy</option>
-                  <option value="3">Succeed</option>
-                </select>
-              </div>
+              <div class="col-md-12" style="font-weight: bold; margin-bottom:10px;">FULL TEST</div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <ul>
-                  <li>New - Practice Full Test TOEIC Reading, Listening 7</li>
+                  <li><a href="exam/iSCTwikn">New - Practice Full Test TOEIC Reading, Listening 7</a></li>
                   <hr />
                   <li>New - Practice Full Test TOEIC Reading, Listening 6</li>
                   <hr />
