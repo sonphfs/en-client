@@ -113,6 +113,20 @@ const routes = [
         meta : {
             layout: MainLayout
         }
+    },
+    {
+        path: '/lesson-complete',
+        component: () => import("@/components/pages/LessonComplete"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
+        path: '/test',
+        component: () => import("@/components/pages/Test"),
+        meta : {
+            layout: MainLayout
+        }
     }
 ];
 
