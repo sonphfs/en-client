@@ -39,7 +39,7 @@ export default {
         method: "get"
       })
         .then(res => {
-          this.user = res.data;
+          this.user = res.data.result_data;
         })
         .catch(err => {});
     }

@@ -8,9 +8,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="A"
-          id="q15251:3_sub1_answer0"
+          v-bind:id="question.id+'A'"
         />
-        <label v-bind:for="question.id">(A)</label>
+        <label v-bind:for="question.id+'A'">(A)</label>
       </div>
       <div class="r1">
         <input
@@ -18,9 +18,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="B"
-          id="q15251:3_sub1_answer1"
+          v-bind:id="question.id+'B'"
         />
-        <label v-bind:for="question.id">(B)</label>
+        <label v-bind:for="question.id+'B'">(B)</label>
       </div>
       <div class="r0">
         <input
@@ -28,9 +28,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="C"
-          id="q15251:3_sub1_answer2"
+          v-bind:id="question.id+'C'"
         />
-        <label v-bind:for="question.id">(C)</label>
+        <label v-bind:for="question.id+'C'">(C)</label>
       </div>
     </div>
     <p></p>

@@ -8,9 +8,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="A"
-          id="q15251:4_sub1_answer0"
+          v-bind:id="question.id+'A'"
         />
-        <label v-bind:for="question.id">{{question.answer_A}}</label>
+        <label v-bind:for="question.id+'A'">{{question.answer_A}}</label>
       </div>
       <div class="r1">
         <input
@@ -18,9 +18,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="B"
-          id="q15251:4_sub1_answer1"
+          v-bind:id="question.id+'B'"
         />
-        <label v-bind:for="question.id">{{question.answer_B}}</label>
+        <label v-bind:for="question.id+'B'">{{question.answer_B}}</label>
       </div>
       <div class="r0">
         <input
@@ -28,9 +28,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="C"
-          id="q15251:4_sub1_answer2"
+          v-bind:id="question.id+'C'"
         />
-        <label v-bind:for="question.id">{{question.answer_C}}</label>
+        <label v-bind:for="question.id+'C'">{{question.answer_C}}</label>
       </div>
       <div class="r1">
         <input
@@ -38,9 +38,9 @@
           v-bind:name="question.id"
           v-model="result.choose"
           value="D"
-          id="q15251:4_sub1_answer3"
+          v-bind:id="question.id+'D'"
         />
-        <label v-bind:for="question.id">{{question.answer_D}}</label>
+        <label v-bind:for="question.id+'D'">{{question.answer_D}}</label>
       </div>
     </div>
     <p></p>

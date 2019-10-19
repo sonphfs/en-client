@@ -154,7 +154,7 @@ export default {
         data
       })
         .then(res => {
-          if (res.data == true) {
+          if (res.data.result_data == true) {
             alert("Lưu thành công!");
           }
         })
@@ -167,7 +167,7 @@ export default {
       method: "get"
     })
       .then(res => {
-        this.userInfos = res.data;
+        this.userInfos = res.data.result_data;
       })
       .catch({});
   }

@@ -104,7 +104,7 @@ export default {
         data
       })
         .then(res => {
-          this.token = res.data.token;
+          this.token = res.data.result_data.token;
           setToken(this.token)
           this.$router.push('/')
         })

@@ -67,7 +67,7 @@ export default {
         data
       })
         .then(res => {
-          console.log(res.data);
+          console.log(res.data.result_data);
         })
         .catch(err => {
           console.log(err);

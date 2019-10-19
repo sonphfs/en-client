@@ -64,8 +64,8 @@ export default {
       method: "get"
     })
       .then(res => {
-        console.log(res.data);
-        this.examination = res.data;
+        console.log(res.data.result_data);
+        this.examination = res.data.result_data;
         this.partData = this.examination.questions;
       })
       .catch(err => {

@@ -54,7 +54,7 @@ export default {
         data
       })
         .then(res => {
-          this.token = res.data;
+          this.token = res.data.result_data;
         })
         .catch(err => {
           console.log(err.response.data);
