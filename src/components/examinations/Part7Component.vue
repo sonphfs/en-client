@@ -68,6 +68,8 @@ export default {
       })
         .then(res => {
           console.log(res.data.result_data);
+          let resultId = res.data.result_data.examination_log_id
+          this.$router.push('/examination/result/'+ resultId)
         })
         .catch(err => {
           console.log(err);

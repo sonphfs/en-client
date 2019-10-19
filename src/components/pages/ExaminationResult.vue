@@ -178,11 +178,30 @@
 
 <script>
 import TitleHeader from "@/components/layouts/TitleHeader.vue";
+import request from '@/utils/request'
 export default {
   name: "ExaminationResult",
+  data() {
+    return {
+      examination_log: []
+    }
+  },
   components: {
     TitleHeader
-  }
+  },
+  created() {
+    request({
+      url: '/examination-result/'+ this.$route.params.id,
+      method: 'get'
+    }).then(res => {
+      this.examination_log = res.data.result_data
+    }).catch({
+
+    })
+  },
+  methods: {
+    
+  },
 };
 </script>
 
