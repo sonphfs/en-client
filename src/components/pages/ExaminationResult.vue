@@ -9,21 +9,13 @@
             <h3 class="title examination">ETS TOEIC 2019 TEST 1</h3>
           </div>
           <div class="row score-table">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
               <div class="row score-report">
                 <div class="col-md-4 personal-info">
                   <div class="name">Sonph</div>
                   <div class="test-date">Test Date: 10/10/19</div>
-                  <div class="num-rigth">
-                      Số câu đúng: 128
-                  </div>
-                  <div class="num-wrong">
-                      Số câu sai: 60
-                  </div>
-                  <div class="not-seleted">
-                      Số câu chưa chọn: 12
-                  </div>
+                  <div class="num-rigth">Số câu đúng: 128</div>
+                  <div class="num-wrong">Số câu sai: 60</div>
+                  <div class="not-seleted">Số câu chưa chọn: 12</div>
                 </div>
                 <div class="col-md-4 component-score">
                   <div class="listening-score">
@@ -40,17 +32,13 @@
                   <div class="score-value">450</div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-3"></div>
           </div>
           <h3 style="text-align:center;">SCORE ANALYSIS</h3>
           <div class="width80">
             <div class="row score-analysis">
-              <div class="col-md-6">
+              <div class="col-md-12 part-analysis">
                 <div class="table">
-                  <div class="row" style="background-color: #8691C1">
-                    Listening Score
-                  </div>
+                  <div class="row" style="background-color: #8691C1">Listening Score</div>
                   <div class="row">
                     <div class="col-md-4 part-number">Part 1</div>
                     <div class="col-md-8 score-progress">
@@ -113,11 +101,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+            </div>
+            <div class="row score-analysis">
+              <div class="col-md-12 part-analysis">
                 <div class="table">
-                  <div class="row" style="background-color: #A5C6A3">
-                    Reading score
-                  </div>
+                  <div class="row" style="background-color: #A5C6A3">Reading score</div>
                   <div class="row">
                     <div class="col-md-4 part-number">Part 5</div>
                     <div class="col-md-8 score-progress">
@@ -178,30 +166,28 @@
 
 <script>
 import TitleHeader from "@/components/layouts/TitleHeader.vue";
-import request from '@/utils/request'
+import request from "@/utils/request";
 export default {
   name: "ExaminationResult",
   data() {
     return {
       examination_log: []
-    }
+    };
   },
   components: {
     TitleHeader
   },
   created() {
     request({
-      url: '/examination-result/'+ this.$route.params.id,
-      method: 'get'
-    }).then(res => {
-      this.examination_log = res.data.result_data
-    }).catch({
-
+      url: "/examination-result/" + this.$route.params.id,
+      method: "get"
     })
+      .then(res => {
+        this.examination_log = res.data.result_data;
+      })
+      .catch({});
   },
-  methods: {
-    
-  },
+  methods: {}
 };
 </script>
 
@@ -216,6 +202,7 @@ div.card {
   width: 100%;
 }
 div.score-table {
+  margin: 0 auto;
   margin-bottom: 50px;
 }
 div.score-report {
@@ -247,20 +234,19 @@ div.component-score {
   border-left: 1.2px solid #333;
   border-right: 1.2px solid #333;
 }
-div.personal-info {
-  width: 40%;
-}
 div.width80 {
   width: 80%;
   margin: 0 auto;
 }
-div.score-analysis div.col-md-6 {
+div.score-analysis {
+  margin: 0 auto;
+}
+div.score-analysis div.part-analysis {
   text-align: center;
-  margin: 0px;
-  padding: 0px;
+  margin: 0 auto;
 }
 div.table {
-  width: 90%;
+  width: 100%;
   margin: 0px 10px 0px 10px;
   padding-bottom: 10px;
 }

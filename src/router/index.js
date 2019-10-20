@@ -93,6 +93,7 @@ const routes = [
             layout: BlankLayout
         }
     },
+    { path: '*', redirect: '/error-404' },  
     {
         path: '/error-500',
         component: () => import("@/components/error_pages/Error500"),

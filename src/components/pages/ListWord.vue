@@ -1,20 +1,22 @@
 <template>
   <div class="row">
     <div class="col-md-8" style="max-width: 950px;">
-      <div class="banner-subject">
-        <img
-          class="img-banner"
-          alt="LET'S GO!"
-          src="@/assets/images/logo_2.svg"
-        />
-      </div>
+      <div class="banner-subject"></div>
       <div class="body-subject">
         <div class="subject-info">
-            WORDS
-            <hr>
+          <div class="overview">Chủ đề Constracts</div>
+          <div class="selected-nav">
+            <span>
+              <button type="button" class="btn btn-warning btn-rounded nav-btn">Học từ vựng</button>
+            </span>
+            <span>
+              <button type="button" class="btn btn-info btn-rounded nav-btn">Kiểm tra</button>
+            </span>
+          </div>
+          <hr />
         </div>
         <div class="subject-list">
-          <div class=" row subject-item">
+          <div class="row subject-item">
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
@@ -22,65 +24,191 @@
                     <img src="@/assets/images/logo_2.svg" alt="JOB" />
                   </div>
                   <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">artist</p>
-                    <p>(n)</p>
-                    <p>họa sỹ</p>
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
                   </div>
-                  <div class="lesson-button">
-                  </div>
+                  <div class="lesson-button"></div>
                 </div>
               </div>
             </div>
-             <div class="col-md-3">
+            <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
                   <div class="lesson-image">
                     <img src="@/assets/images/logo_2.svg" alt="JOB" />
                   </div>
                   <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
                   </div>
-                  <div class="lesson-button">
-                  </div>
+                  <div class="lesson-button"></div>
                 </div>
               </div>
-            </div> <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
                   <div class="lesson-image">
                     <img src="@/assets/images/logo_2.svg" alt="JOB" />
                   </div>
                   <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
                   </div>
-                  <div class="lesson-button">
-                  </div>
+                  <div class="lesson-button"></div>
                 </div>
               </div>
-            </div> <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
                   <div class="lesson-image">
                     <img src="@/assets/images/logo_2.svg" alt="JOB" />
                   </div>
                   <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
                   </div>
-                  <div class="lesson-button">
-                  </div>
+                  <div class="lesson-button"></div>
                 </div>
               </div>
-            </div> <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
                   <div class="lesson-image">
                     <img src="@/assets/images/logo_2.svg" alt="JOB" />
                   </div>
                   <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
                   </div>
-                  <div class="lesson-button">
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
                   </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="lesson-image">
+                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                  </div>
+                  <div class="lesson-name" style="text-align: center">
+                    <p class="lesson-name margin-0">artist</p>
+                    <p class="margin-0">(n)</p>
+                    <p class="margin-0">họa sỹ</p>
+                  </div>
+                  <div class="lesson-button"></div>
                 </div>
               </div>
             </div>
@@ -97,8 +225,8 @@ div.col-md-8 {
   max-width: 950px;
   box-sizing: border-box;
 }
-div.card{
-    margin-bottom: 20px;
+div.card {
+  margin-bottom: 20px;
 }
 div.banner-subject {
   width: 100%;
@@ -111,11 +239,28 @@ div.banner-subject img {
   height: 115px;
   vertical-align: middle;
 }
-
-div.subject-info{
-    margin-top: 10px;
+div.lesson-image {
+  margin-bottom: 1rem;
 }
-div.lesson-button{
-    text-align: center;
+div.subject-info {
+  margin-top: 10px;
+}
+div.lesson-button {
+  text-align: center;
+}
+p.lesson-name {
+  font-weight: bold;
+  color: #00bcef;
+}
+p.margin-0 {
+  margin: 0px;
+}
+
+div.subject-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+button.nav-btn{
+  margin-left: 2rem;
 }
 </style>
