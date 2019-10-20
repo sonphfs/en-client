@@ -1,6 +1,6 @@
 <template>
-  <div class="row" style="width: 90%; margin: 0 auto">
-    <div class="col-md-3 grid-margin">
+  <div class="row" style="margin: 0 auto">
+    <div class="col-md-4 grid-margin">
       <div class="card" style="max-height: 345px;">
         <div class="card-body d-flex flex-column">
           <div class="setting-nav-tab">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9 grid-margin">
+    <div class="col-md-8 grid-margin">
       <div class="card">
         <div class="card-body d-flex flex-column">
           <div class="infos" v-show="!isSecurity">

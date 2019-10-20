@@ -11,7 +11,7 @@
           <div class="dropdown" @mouseover="word_active = true" @mouseleave="word_active = false">
             <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Từ vựng</button>
             <div class="dropdown-menu show" v-show="word_active">
-              <a class="dropdown-item" href="#">Chủ đề</a>
+              <a class="dropdown-item" href="/list-subject">Chủ đề</a>
               <a class="dropdown-item" href="#">Kiểm tra</a>
             </div>
           </div>

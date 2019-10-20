@@ -6,28 +6,25 @@
         <h3>Thi thử TOEIC online</h3>
 
         <div class="page-header">
-          <h4 class="page-title">Dashboard</h4>
+          <h4 class="page-title" style="width: 7%">Thi thử</h4>
           <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
             <ul class="quick-links">
               <li>
-                <a href="#">ICE Market data</a>
+                <a href="#">Fulltest</a>
               </li>
               <li>
-                <a href="#">Own analysis</a>
-              </li>
-              <li>
-                <a href="#">Historic market data</a>
+                <a href="#">Bắt đầu</a>
               </li>
             </ul>
             <ul class="quick-links ml-auto">
               <li>
-                <a href="#">Settings</a>
+                <a href="#">Giới thiệu</a>
               </li>
               <li>
-                <a href="#">Analytics</a>
+                <a href="#">Hướng dẫn</a>
               </li>
               <li>
-                <a href="#">Watchlist</a>
+                <a href="#">Thi</a>
               </li>
             </ul>
           </div>
@@ -35,7 +32,7 @@
       </div>
     </div>
     <!-- Page Title Header Ends-->
-    <div class="col-md-9 grid-margin stretch-card">
+    <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body" style="padding-left: 80px;">
           <div class="title">
@@ -104,7 +101,7 @@
           <h3>Thời gian làm bài: 120 phút</h3>
         </div>
         <div class="align-center">
-          <button class="btn btn-primary">START EXAM</button>
+          <button class="btn btn-primary" @click="start()">START EXAM</button>
         </div>
       </div>
     </div>
@@ -114,7 +111,12 @@
 <script>
 export default {
   name: "StartExamination",
-  components: {}
+  components: {},
+  methods: {
+    start() {
+       return this.$router.push('/exam/'+ this.$route.params.code)
+    }
+  }
 };
 </script>
 

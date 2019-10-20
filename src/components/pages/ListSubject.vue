@@ -1,8 +1,8 @@
 <template>
   <div class="row">
-    <div class="col-md-8 subject-wapper" >
+    <div class="col-md-12 subject-wapper" >
       <div class="banner-subject">
-        <h3>HỌC TỪ THEO CHỦ ĐỀ</h3>
+        <h3>HỌC TỪ VỰNG THEO CHỦ ĐỀ</h3>
         <p>
           Học từ vựng tiếng Anh theo chủ đề là phương pháp học từ vựng vô cùng hiệu quả và không gây nhàm chán.
           Chúng ta có thể tùy chọn các chủ đề từ cơ bản như gia đình, thể thao cho đến những chủ đề nâng cao như nghề nghiệp, công việc.
@@ -16,62 +16,17 @@
         </div>
         <div class="subject-list">
           <div class="row subject-item">
-            <div class="col-md-4 l-item">
+            <div class="col-md-4 l-item" v-for="subject in subjects">
               <div class="card">
                 <div class="card-body">
                   <div class="lesson-image">
-                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
+                    <img src="@/assets/images/hobby.jpg" alt="JOB" />
                   </div>
                   <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
+                    <p class="lesson-name">{{subject.name}}</p>
                   </div>
                   <div class="lesson-button">
-                    <button type="button" class="btn btn-success">Học ngay</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 l-item">
-              <div class="card">
-                <div class="card-body">
-                  <div class="lesson-image">
-                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
-                  </div>
-                  <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
-                  </div>
-                  <div class="lesson-button">
-                    <button type="button" class="btn btn-success">Học ngay</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 l-item">
-              <div class="card">
-                <div class="card-body">
-                  <div class="lesson-image">
-                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
-                  </div>
-                  <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
-                  </div>
-                  <div class="lesson-button">
-                    <button type="button" class="btn btn-success">Học ngay</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 l-item">
-              <div class="card">
-                <div class="card-body">
-                  <div class="lesson-image">
-                    <img src="@/assets/images/logo_2.svg" alt="JOB" />
-                  </div>
-                  <div class="lesson-name" style="text-align: center">
-                    <p class="lesson-name">JOB</p>
-                  </div>
-                  <div class="lesson-button">
-                    <button type="button" class="btn btn-success">Học ngay</button>
+                    <button type="button" class="btn btn-success" @click="start(subject.id)">Học ngay</button>
                   </div>
                 </div>
               </div>
@@ -83,6 +38,7 @@
   </div>
 </template>
 <script>
+import request from '@/utils/request'
 export default {
   name: "ListSubject",
   data() {
@@ -91,10 +47,20 @@ export default {
     }
   },
   methods: {
-
+    start(subjectId){
+        return this.$router.push('/subject/'+ subjectId)
+    }
   },
   created() {
-
+    request({
+      url: '/subjects',
+      method: 'get'
+    }).then(res => {
+      this.subjects = res.data.result_data
+    }).catch(err => {
+        // eslint-disable-next-line
+        console.log(err.res)
+    })
   }
 }
 </script> 
@@ -129,6 +95,7 @@ div.lesson-button button.btn-success{
       border-radius: 30px;
 }
 div.lesson-image {
+  text-align: center;
   margin-bottom: 2rem;
 }
 div.lesson-name {

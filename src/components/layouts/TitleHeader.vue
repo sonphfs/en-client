@@ -14,7 +14,7 @@
             </li>
           </ul>
           <ul class="quick-links ml-auto">
-            <li>e
+            <li>
               <a href="#">Đề thi</a>
             </li>
             <li>

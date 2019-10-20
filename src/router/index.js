@@ -25,7 +25,6 @@ const routes = [
     {
         path: '/',
         component: LandingPage,
-        redirect: 'exam/iSCTwikn',
         meta: {
             layout: BlankLayout
         },
@@ -66,7 +65,7 @@ const routes = [
         }
     },
     {
-        path: '/start-exam',
+        path: '/start-exam/:code',
         component: () => import("@/components/pages/StartExamination"),
         meta : {
             layout: MainLayout
@@ -138,8 +137,15 @@ const routes = [
         }
     },
     {
-        path: '/test',
+        path: '/test/:id',
         component: () => import("@/components/pages/Test"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
+        path: '/start-test/:id',
+        component: () => import("@/components/pages/RegularTest"),
         meta : {
             layout: MainLayout
         }

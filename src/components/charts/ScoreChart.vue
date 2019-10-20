@@ -20,7 +20,6 @@ export default {
       method: "get"
     })
       .then(res => {
-        console.log(res.data)
         this.logData = res.data.result_data.Logs;
         let labels = [];
         let data = [];
@@ -39,6 +38,7 @@ export default {
         };
       })
       .catch(err => {
+        // eslint-disable-next-line
         console.log(err.res);
       });
   },

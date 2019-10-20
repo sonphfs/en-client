@@ -74,6 +74,7 @@ export default {
   methods: {
     sendAnswerToPart() {
       this.$emit("sendAnswerToPart", this.result);
+      // eslint-disable-next-line
       console.log("sendAnswerToPart");
     },
     sendAnswersQuestionToExam() {
