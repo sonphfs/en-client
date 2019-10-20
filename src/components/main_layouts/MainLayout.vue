@@ -2,7 +2,6 @@
   <div class="container-scroller">
     <Header :user="user" @logout="removeUser"></Header>
     <div class="container-fluid page-body-wrapper">
-      <!-- <MenuSide></MenuSide> -->
       <div class="main-panel">
         <div class="content-wrapper">
           <router-view></router-view>
@@ -17,14 +16,12 @@
 import request from "@/utils/request";
 import { getToken } from "@/utils/auth";
 import Header from "@/components/layouts/Header.vue";
-import MenuSide from "@/components/layouts/MenuSide.vue";
 import Footer from "@/components/layouts/Footer.vue";
 
 export default {
   name: "MainLayout",
   components: {
     Header,
-    MenuSide,
     Footer
   },
   data() {
@@ -35,13 +32,16 @@ export default {
   created() {
     if (getToken()) {
       request({
-        url: "/auth",
+        url: "/user/infos",
         method: "get"
       })
         .then(res => {
           this.user = res.data.result_data;
         })
-        .catch(err => {});
+        .catch(err => {
+          // eslint-disable-next-line
+          console.log(err.res)
+        });
     }
   },
   methods: {

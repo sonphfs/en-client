@@ -164,31 +164,20 @@
               <div class="dropdown-header text-center">
                 <img
                   class="img-md rounded-circle"
-                  src="@/assets/images/faces/face8.jpg"
+                  src="https://lh3.googleusercontent.com/a-/AAuE7mAPaAzyOYH-rjrFDVmkBq37JJ2-puZIWDrLVR0yHw"
                   alt="Profile image"
                 />
                 <p class="mb-1 mt-3 font-weight-semibold">{{user.username}}</p>
                 <p class="font-weight-light text-muted mb-0">{{user.email}}</p>
               </div>
               <a class="dropdown-item" href="/my-profile">
-                My Profile
-                <span class="badge badge-pill badge-danger">1</span>
+                Thông tin cá nhân
+                <span class="badge badge-pill badge-danger"></span>
                 <i class="dropdown-item-icon ti-dashboard"></i>
               </a>
-              <a class="dropdown-item">
-                Messages
-                <i class="dropdown-item-icon ti-comment-alt"></i>
-              </a>
-              <a class="dropdown-item">
-                Activity
-                <i class="dropdown-item-icon ti-location-arrow"></i>
-              </a>
-              <a class="dropdown-item">
-                FAQ
-                <i class="dropdown-item-icon ti-help-alt"></i>
-              </a>
+
               <a class="dropdown-item" @click="logout">
-                Sign Out
+                Đăng xuất
                 <i class="dropdown-item-icon ti-power-off"></i>
               </a>
             </div>

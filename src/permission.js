@@ -8,7 +8,7 @@ export async function isAuthorized() {
     let isAuthorized = false
     if (hasToken) {
         await request({
-            url: '/auth',
+            url: '/user/infos',
             method: 'get'
         }).then(() => {
             isAuthorized = true

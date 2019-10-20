@@ -85,8 +85,10 @@ export default {
         method: 'post',
         data
       }).then(res => {
+        // eslint-disable-next-line
         console.log(res.data.result_data);
       }).catch(err => {
+        // eslint-disable-next-line
         console.log(err.res)
       })
     }

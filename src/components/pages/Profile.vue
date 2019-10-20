@@ -88,37 +88,42 @@
             </div>
           </div>
           <div class="change-password" v-show="isSecurity">
-            <form action>
-              <form class="forms-sample">
-                <div class="form-group">
-                  <label for="password">Mật khẩu cũ</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    placeholder="Enter password"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="password">Mât khẩu mới</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    placeholder="Enter password"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="password">Nhập lại mật khẩu mới</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    placeholder="Enter password"
-                  />
-                </div>
-                <button type="submit" class="btn btn-success mr-2">Lưu thay đổi</button>
-              </form>
+            <form class="forms-sample">
+              <div class="form-group">
+                <label for="curent_password">Mật khẩu cũ</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="curent_password"
+                  placeholder="Enter password"
+                  v-model="changePassword.current_password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Mât khẩu mới</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter password"
+                  v-model="changePassword.password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password_confirmation">Nhập lại mật khẩu mới</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password_confirmation"
+                  placeholder="Enter password"
+                  v-model="changePassword.password_confirmation"
+                />
+              </div>
+              <button
+                type="button"
+                class="btn btn-success mr-2"
+                @click="updatePassword"
+              >Lưu thay đổi</button>
             </form>
           </div>
         </div>
@@ -136,9 +141,9 @@ export default {
       isSecurity: false,
       userInfos: { username: "", email: "", phone: "", address: "" },
       changePassword: {
-        currentPassword: "",
-        newPassword: "",
-        password_comfimation: ""
+        current_password: "",
+        password: "",
+        password_confirmation: ""
       }
     };
   },
@@ -158,12 +163,32 @@ export default {
             alert("Lưu thành công!");
           }
         })
-        .catch({});
+        .catch(err => {
+          // eslint-disable-next-line
+          console.log(err.res);
+        });
+    },
+    updatePassword() {
+      let data = this.changePassword;
+      request({
+        url: "/user/change-password",
+        method: "post",
+        data
+      })
+        .then(res => {
+          if (res.data.result_data == true) {
+            alert("Lưu thành công!");
+          }
+        })
+        .catch(err => {
+          // eslint-disable-next-line
+          console.log(err);
+        });
     }
   },
   created() {
     request({
-      url: "/auth",
+      url: "/user/infos",
       method: "get"
     })
       .then(res => {
