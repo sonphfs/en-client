@@ -20,7 +20,8 @@ export default {
       method: "get"
     })
       .then(res => {
-        this.logData = res.data.result_data;
+        console.log(res.data)
+        this.logData = res.data.result_data.Logs;
         let labels = [];
         let data = [];
         this.logData.forEach((e, i) => {
