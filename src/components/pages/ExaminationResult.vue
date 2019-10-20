@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-body">
             <h3 class="title">Kết quả bài thi </h3>
-            <h3 class="title examination">{{ examination.title }}</h3>
+            <h3 class="title examination">{{ 1 }}</h3>
           </div>
           <div class="row score-table">
             <div class="row score-report">

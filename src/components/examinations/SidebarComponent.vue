@@ -46,12 +46,11 @@
             <div class="chartjs-legend">
               <ul>
                 <li>
-                  <span style="background-color: rgba(88, 208, 222, 0.8);"></span>Todo
+                  <span style="background-color: rgba(88, 208, 222, 0.8);"></span>Time left:
                 </li>
               </ul>
             </div>
-            <p></p>
-            <p>Time left: {{hours}} giờ: {{minutes}} phút: {{seconds}} giây</p>
+            <p> {{hours}} giờ: {{minutes}} phút: {{seconds}} giây</p>
           </div>
         </div>
       </div>
@@ -117,3 +116,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .page-link {
+    padding: 0.5rem 0.75rem;
+  }
+</style>
