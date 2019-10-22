@@ -78,7 +78,7 @@
 
 <script>
 import request from "@/utils/request"
-import { setToken} from '@/utils/auth'
+import { setToken, getToken } from '@/utils/auth'
 import {isAuthorized} from '@/permission'
 export default {
   name: "Login",
@@ -106,6 +106,7 @@ export default {
         .then(res => {
           this.token = res.data.result_data.token;
           setToken(this.token)
+          request.defaults.headers.common['Authorization'] = 'Bearer '+ getToken()
           this.$router.push('/')
         })
         .catch(err =>{

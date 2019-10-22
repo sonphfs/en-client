@@ -3,8 +3,9 @@ import VueRouter from 'vue-router'
 import { isAuthorized } from '@/permission'
 Vue.use(VueRouter)
 
-const ifAuthenticated = (to, from, next) => {
-    if (isAuthorized) {
+const ifAuthenticated = async (to, from, next) => {
+    let check = await isAuthorized()
+    if (check) {
       next()
       return
     }
