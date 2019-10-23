@@ -96,7 +96,8 @@ export default {
     login() {
       let data = {
         email: this.email,
-        password: this.password
+        password: this.password,
+        site: 'client'
       };
       request({
         url: "/login",
