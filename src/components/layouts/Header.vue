@@ -152,7 +152,7 @@
             >
               <img
                 class="img-xs rounded-circle"
-                src="https://lh3.googleusercontent.com/a-/AAuE7mAPaAzyOYH-rjrFDVmkBq37JJ2-puZIWDrLVR0yHw"
+                :src="'http://127.0.0.1:8001/'+ user.avatar"
                 alt="Profile image"
               />
             </a>
@@ -164,7 +164,7 @@
               <div class="dropdown-header text-center">
                 <img
                   class="img-md rounded-circle"
-                  src="https://lh3.googleusercontent.com/a-/AAuE7mAPaAzyOYH-rjrFDVmkBq37JJ2-puZIWDrLVR0yHw"
+                  :src="'http://127.0.0.1:8001/'+ user.avatar"
                   alt="Profile image"
                 />
                 <p class="mb-1 mt-3 font-weight-semibold">{{user.username}}</p>

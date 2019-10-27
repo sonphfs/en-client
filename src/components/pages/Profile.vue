@@ -33,13 +33,14 @@
         <div class="card-body d-flex flex-column">
           <div class="infos" v-show="!isSecurity">
             <div class="avatar">
-              <img
+              <img class="avatar-img"
                 alt="avatar"
-                src="https://lh3.googleusercontent.com/a-/AAuE7mAPaAzyOYH-rjrFDVmkBq37JJ2-puZIWDrLVR0yHw"
+                :src="'http://127.0.0.1:8001/'+ this.userInfos.avatar"
               />
-              <span class="icon-update">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </span>
+              <button type="button" class="btn btn-outline-info btn-upload-avatar" @click="$refs.avatar.click()">
+                <i class="mdi mdi-upload"></i>Upload avatar
+              </button>
+              <input type="file" name="file" id="file" ref="avatar" style="display: none" @change="uploadAvatarEvent">
             </div>
             <div class="user-info">
               <form class="forms-sample" @submit.prevent="updateProfile()">
@@ -184,7 +185,25 @@ export default {
           // eslint-disable-next-line
           console.log(err);
         });
-    }
+    },
+    uploadAvatarEvent($event) {
+      let file = this.$refs.avatar.files[0];
+      console.log(file);
+      let formData = new FormData();
+      formData.append("avatar", file);
+      request
+        .post("/user/update-profile", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    },
   },
   created() {
     request({
@@ -264,6 +283,18 @@ input.form-control:focus {
 
 div.infos {
   display: grid;
-  grid-template-columns: 18% 82fr;
+  grid-template-columns: 25% 75%;
+}
+
+button.btn-upload-avatar {
+  margin-top: 10%;
+  padding: 6.4px 5px;
+  color: #212529;
+  background-color: #dde4eb;
+  border-color: #dde4eb;
+}
+
+img.avatar-img {
+  width: 120px;
 }
 </style>

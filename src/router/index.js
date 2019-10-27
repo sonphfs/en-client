@@ -49,7 +49,8 @@ const routes = [
         component: () => import("@/components/pages/ExaminationResult"),
         meta : {
             layout: MainLayout
-        }
+        },
+        beforeEnter: ifAuthenticated
     },
     {
         path: '/list-exam',
@@ -77,7 +78,8 @@ const routes = [
         component: () => import("@/components/pages/Examination"),
         meta : {
             layout: MainLayout
-        }
+        },
+        beforeEnter: ifAuthenticated
     },
     {
         path: '/chart',
@@ -106,7 +108,8 @@ const routes = [
         component: () => import("@/components/pages/Profile"),
         meta : {
             layout: MainLayout
-        }
+        },
+        beforeEnter: ifAuthenticated
     },
     {
         path: '/list',
