@@ -11,7 +11,7 @@
             <div class="row">
               <div class="col-md-12">
                 <ul>
-                  <li><a href="start-exam/iSCTwikn">New - Practice Full Test TOEIC Reading, Listening 7</a></li>
+                  <li><a href="start-exam/a0Fgab6a">New - Practice Full Test TOEIC Reading, Listening 7</a></li>
                   <hr />
                   <li>New - Practice Full Test TOEIC Reading, Listening 6</li>
                   <hr />

@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-body">
             <h3 class="title">Kết quả bài thi </h3>
-            <h3 class="title examination">{{ examination.title }}</h3>
+            <h3 class="title examination"></h3>
           </div>
           <div class="row score-table">
             <div class="row score-report">
@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <h3 style="text-align:center;">SCORE ANALYSIS</h3>
+          <!-- <h3 style="text-align:center;">SCORE ANALYSIS</h3>
           <div class="width80">
             <div class="row score-analysis">
               <div class="col-md-12 part-analysis">
@@ -133,7 +133,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <h3 style="text-align: center;"> BIỂU ĐỒ ĐIỂM SỐ</h3>
           <div class="width80">
             <chart></chart>
