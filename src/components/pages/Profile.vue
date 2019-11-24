@@ -33,17 +33,32 @@
         <div class="card-body d-flex flex-column">
           <div class="infos" v-show="!isSecurity">
             <div class="avatar">
-              <img class="avatar-img"
+              <img
+                class="avatar-img"
                 alt="avatar"
                 :src="'http://127.0.0.1:8001/'+ this.userInfos.avatar"
               />
-              <button type="button" class="btn btn-outline-info btn-upload-avatar" @click="$refs.avatar.click()">
+              <button
+                type="button"
+                class="btn btn-outline-info btn-upload-avatar"
+                @click="confirmUpdate('avatar', 'Select and upload avatar!')"
+              >
                 <i class="mdi mdi-upload"></i>Upload avatar
               </button>
-              <input type="file" name="file" id="file" ref="avatar" style="display: none" @change="uploadAvatarEvent">
+              <input
+                type="file"
+                name="file"
+                id="file"
+                ref="avatar"
+                style="display: none"
+                @change="uploadAvatarEvent"
+              />
             </div>
             <div class="user-info">
-              <form class="forms-sample" @submit.prevent="updateProfile()">
+              <form
+                class="forms-sample"
+                @submit.prevent="confirmUpdate('infos', 'Update profile!')"
+              >
                 <div class="form-group">
                   <label for="Enter username">Tên</label>
                   <input
@@ -123,7 +138,7 @@
               <button
                 type="button"
                 class="btn btn-success mr-2"
-                @click="updatePassword"
+                @click="confirmUpdate('password', 'Change password!')"
               >Lưu thay đổi</button>
             </form>
           </div>
@@ -134,6 +149,7 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 import request from "@/utils/request";
 export default {
   name: "Profile",
@@ -160,14 +176,41 @@ export default {
         data
       })
         .then(res => {
-          if (res.data.result_data == true) {
-            alert("Lưu thành công!");
-          }
+          this.userInfos = res.data.result_data;
+          this.showSuccessDiaglog();
         })
         .catch(err => {
           // eslint-disable-next-line
           console.log(err.res);
         });
+    },
+    confirmUpdate(type, message) {
+      Swal.fire({
+        title: "Confirm",
+        text: message,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "OK",
+        cancelButtonText: "CANCEL",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6"
+      }).then(result => {
+        if (result.value) {
+          switch (type) {
+            case "avatar":
+              this.$refs.avatar.click();
+              break;
+            case "password":
+              this.updatePassword();
+              break;
+            case "infos":
+              this.updateProfile();
+              break;
+            default:
+              break;
+          }
+        }
+      });
     },
     updatePassword() {
       let data = this.changePassword;
@@ -177,9 +220,8 @@ export default {
         data
       })
         .then(res => {
-          if (res.data.result_data == true) {
-            alert("Lưu thành công!");
-          }
+          this.userInfos = res.data.result_data;
+          this.showSuccessDiaglog();
         })
         .catch(err => {
           // eslint-disable-next-line
@@ -198,12 +240,22 @@ export default {
           }
         })
         .then(res => {
-          console.log(res.data);
+          this.userInfos = res.data.result_data;
+          this.showSuccessDiaglog();
         })
         .catch(err => {
-          console.log(err)
+          console.log(err);
         });
     },
+    showSuccessDiaglog() {
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Profile has been saved",
+        showConfirmButton: false,
+        timer: 2000
+      });
+    }
   },
   created() {
     request({

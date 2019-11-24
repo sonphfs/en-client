@@ -3,14 +3,11 @@
   <div class="row page-title-header">
     <div class="col-12">
       <div class="page-header">
-        <h4 class="page-title" style="width: 7%">BÀI THI</h4>
+        <h4 class="page-title" style="width: 7%">{{ parentPage }}</h4>
         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
           <ul class="quick-links">
-            <li>
-              <a href="#">Tên bài thi</a>
-            </li>
-            <li>
-              <a href="#">Kết quả</a>
+            <li v-for="item in breadcrumbs">
+              <a :href="item.link">{{ item.title}}</a>
             </li>
           </ul>
           <ul class="quick-links ml-auto">
@@ -32,6 +29,21 @@
 </template>
 <script>
 export default {
-  name: "TitleHeader"
+  name: "TitleHeader",
+  data() {
+    return {
+      breadcrumbs: [
+        {
+          title: "Tên bài thi",
+          link: "#"
+        },
+        {
+          title: "Kết quả",
+          link: "#"
+        }
+      ],
+      parentPage: "BÀI THI"
+    };
+  }
 };
 </script>

@@ -15,7 +15,7 @@
         <nav aria-label="...">
           <ul class="pagination" style="padding-top: 1rem;">
             <li class="page-item">
-              <button class="btn btn-primary" @click="submitExam">NỘP BÀI</button>
+              <button class="btn btn-primary" @click="confirmSubmit">NỘP BÀI</button>
             </li>
           </ul>
         </nav>
@@ -26,7 +26,7 @@
 
 <script>
 import request from "@/utils/request";
-
+import Swal from "sweetalert2";
 import Question from "@/components/questions/QuestionPart7Component.vue";
 export default {
   name: "Part7",
@@ -54,6 +54,23 @@ export default {
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);
     },
+    confirmSubmit(){
+        Swal.fire({
+        title: "Confirm",
+        text:
+          "Once you submit, you will no longer be able to change your answers for this attempt.",
+        showCancelButton: true,
+        confirmButtonText: "SUBMIT",
+        cancelButtonText: "CANCEL",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6"
+      }).then(result => {
+        if (result.value) {
+          this.submitExam()
+        }
+      });
+    }
+    ,
     submitExam() {
       let data = {
         listening_questions: JSON.parse(localStorage.getItem("result_listening")),

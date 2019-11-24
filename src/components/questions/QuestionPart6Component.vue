@@ -25,7 +25,7 @@
             value="B"
             v-bind:id="question.id+'B'"
           />
-          <label v-bind:for="question.id+'B'">{{question.answer_A}}</label>
+          <label v-bind:for="question.id+'B'">{{question.answer_B}}</label>
         </div>
         <div class="r0">
           <input
@@ -35,7 +35,7 @@
             value="C"
             v-bind:id="question.id+'C'"
           />
-          <label v-bind:for="question.id+'C'">{{question.answer_A}}</label>
+          <label v-bind:for="question.id+'C'">{{question.answer_C}}</label>
         </div>
         <div class="r1">
           <input
@@ -45,7 +45,7 @@
             value="D"
             v-bind:id="question.id+'D'"
           />
-          <label v-bind:for="question.id+'D'">{{question.answer_A}}</label>
+          <label v-bind:for="question.id+'D'">{{question.answer_D}}</label>
         </div>
       </div>
     </div>

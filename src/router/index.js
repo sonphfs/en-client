@@ -60,6 +60,13 @@ const routes = [
         }
     },
     {
+        path: '/toeic-histories',
+        component: () => import("@/components/pages/ToeicHistories"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
         path: '/intro-exam',
         component: () => import("@/components/pages/IntroExamination"),
         meta : {

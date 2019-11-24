@@ -109,12 +109,27 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   name: "StartExamination",
   components: {},
   methods: {
     start() {
-       return this.$router.push('/exam/'+ this.$route.params.code)
+      Swal.fire({
+        title: "Start attempt",
+        text:
+          "The exam has a time limit of 120 mins. Time will count down from the moment you start your attempt and you must submit before it expires. Are you sure that you wish to start now?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "START ATTEMPT",
+        cancelButtonText: "CANCEL",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6"
+      }).then(result => {
+        if (result.value) {
+          return this.$router.push("/exam/" + this.$route.params.code);
+        }
+      });
     }
   }
 };
