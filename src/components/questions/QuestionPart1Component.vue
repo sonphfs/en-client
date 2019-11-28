@@ -2,7 +2,7 @@
   <div>
     <h5>{{question.no}}. {{ question.content }}</h5>
     <p v-if="question.image">
-      <img v-bind:src="question.image" alt="img01" title="ENZA.VN" />
+      <img v-bind:src="serverUrl + question.image" width="300px" height="300px"/>
     </p>
     <div class="answer">
       <div class="r0">
@@ -56,7 +56,8 @@ export default {
   props: ["question"],
   data() {
     return {
-      result: { question_id: this.question.id, choose: "" }
+      result: { question_id: this.question.id, choose: "" },
+      serverUrl: process.env.VUE_APP_BASE_SERVER_URL
     };
   },
   methods: {

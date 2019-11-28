@@ -14,7 +14,7 @@
                   <li v-for="examination in examinationList" v-if="examination.type == type.id">
                     <a
                       :href="'start-exam/'+ examination.code"
-                    >New - Practice Full Test TOEIC Reading, Listening 7</a>
+                    >{{ examination.title }}</a>
                     <hr />
                   </li>
                 </ul>

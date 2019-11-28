@@ -8,22 +8,26 @@
         <p>
           <strong>Directions:</strong> For each question in this part, you will hear four statements about a picture in your test book. When you hear the statements, you must select the one statement that best describes what you see in the picture. Then find the number of the question on your answer sheet and mark your answer. The statements will not be printed in your test book and will be spoken only one time. Look at the example item below.
         </p>
-        <p>
-          <strong>Example:</strong>
-        </p>
-        <p>
-          <img
-            src="https://enza.com.vn/toeic/image/sample/c-they-re-standing-near-the-table.jpg"
-            alt="Image File"
-            title="ENZA.VN"
-          />
-        </p>
-        <p>Statement (C), "They're standing near the table," is the best description of the picture, so you should select answer (C) and mark it on your answer sheet.</p>
-        <hr />
+        <div v-for="question in questions" v-if="question.part == 1 && question.no == 0">
+          <p>
+            <strong>Example:</strong>
+          </p>
+          <p>
+            <img
+              :src="serverUrl + question.image"
+              alt="Example Image"
+              width="300px"
+              height="300px"
+            />
+          </p>
+          <p>Statement ({{question.correct_answer}}), "They're standing near the table," is the best description of the picture, so you should select answer ({{question.correct_answer}}) and mark it on your answer sheet.</p>
+          <hr />
+        </div>
         <Question
           v-for="question in questions"
           :question="question"
           v-on:sendAnswerToPart="getAnswer"
+          v-if="question.part == 1 && question.no != 0"
         ></Question>
         <hr />
         <nav aria-label="...">
@@ -45,7 +49,11 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result: localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : []
+      result:
+        localStorage.getItem("result_listening") != null
+          ? JSON.parse(localStorage.getItem("result_listening"))
+          : [],
+          serverUrl: process.env.VUE_APP_BASE_SERVER_URL
     };
   },
   components: {
@@ -58,13 +66,14 @@ export default {
         return e.question_id != result.question_id;
       });
       this.result.push(result);
-      localStorage.setItem('result_listening', JSON.stringify(this.result))
+      console.log(resultData)
+      localStorage.setItem("result_listening", JSON.stringify(this.result));
     },
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);
     },
-     nextStep() {
-      this.$emit('nextStep', 2)
+    nextStep() {
+      this.$emit("nextStep", 2);
     }
   },
   watch: {
