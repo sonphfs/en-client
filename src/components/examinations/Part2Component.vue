@@ -28,6 +28,7 @@
           v-for="question in questions"
           :question="question"
           v-on:sendAnswerToPart="getAnswer"
+          v-if="question.part == 2&&question.no!=0"
         ></Question>
         <hr />
         <nav aria-label="...">
@@ -49,10 +50,7 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result:
-        localStorage.getItem("result_listening") != null
-          ? JSON.parse(localStorage.getItem("result_listening"))
-          : []
+      result: []
     };
   },
   components: {
@@ -60,6 +58,7 @@ export default {
   },
   methods: {
     getAnswer(result) {
+      this.result = localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : [];
       var resultData = this.result;
       this.result = resultData.filter(e => {
         return e.question_id != result.question_id;

@@ -31,7 +31,7 @@
 import TitleHeader from "@/components/layouts/TitleHeader.vue";
 import request from "@/utils/request";
 export default {
-  name: "Dashboard",
+  name: "ListExam",
   components: {
     TitleHeader
   },

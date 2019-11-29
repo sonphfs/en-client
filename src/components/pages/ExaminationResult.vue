@@ -136,7 +136,7 @@
           </div> -->
           <h3 style="text-align: center;"> BIỂU ĐỒ ĐIỂM SỐ</h3>
           <div class="width80">
-            <chart></chart>
+            <chart :examCode="this.$route.params.code"></chart>
           </div>
           <div class="button-center">
             <button type="button" class="btn btn-secondary">XEM LẠI BÀI THI</button>

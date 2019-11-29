@@ -49,11 +49,8 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result:
-        localStorage.getItem("result_listening") != null
-          ? JSON.parse(localStorage.getItem("result_listening"))
-          : [],
-          serverUrl: process.env.VUE_APP_BASE_SERVER_URL
+      result: [],
+      serverUrl: process.env.VUE_APP_BASE_SERVER_URL
     };
   },
   components: {
@@ -61,6 +58,7 @@ export default {
   },
   methods: {
     getAnswer(result) {
+      this.result = localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : [];
       var resultData = this.result;
       this.result = resultData.filter(e => {
         return e.question_id != result.question_id;

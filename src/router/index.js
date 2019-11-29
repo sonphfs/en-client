@@ -45,7 +45,7 @@ const routes = [
         }
     },
     {
-        path: '/examination/result/:id',
+        path: '/examination/result/:id/:code',
         component: () => import("@/components/pages/ExaminationResult"),
         meta : {
             layout: MainLayout

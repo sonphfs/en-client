@@ -33,7 +33,7 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result: localStorage.getItem('result_reading') != null ? JSON.parse(localStorage.getItem('result_reading')) : []
+      result: []
     };
   },
   components: {
@@ -41,6 +41,7 @@ export default {
   },
   methods: {
     getAnswer(result) {
+      this.result = localStorage.getItem('result_reading') != null ? JSON.parse(localStorage.getItem('result_reading')) : [];
       var resultData = this.result;
       this.result = resultData.filter(e => {
         return e.question_id != result.question_id;

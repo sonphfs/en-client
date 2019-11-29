@@ -8,15 +8,18 @@ export default {
   components: {
     Chart
   },
+  props: ["examCode"],
   data() {
     return {
       datacollection: null,
-      logData: []
+      logData: [],
+      code: null,
     };
   },
   created() {
+    this.code = this.examCode
     request({
-      url: "exam-log",
+      url: "exam-log/" + this.code,
       method: "get"
     })
       .then(res => {

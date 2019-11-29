@@ -33,7 +33,7 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result: localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : []
+      result: []
     };
   },
   components: {
@@ -41,11 +41,14 @@ export default {
   },
   methods: {
     getAnswer(result) {
+      this.result = localStorage.getItem('result_listening') != null ? JSON.parse(localStorage.getItem('result_listening')) : [];
       var resultData = this.result;
       this.result = resultData.filter(e => {
         return e.question_id != result.question_id;
       });
+      console.log(resultData)
       this.result.push(result);
+      console.log(resultData)
       localStorage.setItem('result_listening', JSON.stringify(this.result))
     },
     sendAnswersQuestionToExam() {
