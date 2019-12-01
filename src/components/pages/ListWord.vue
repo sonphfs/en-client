@@ -90,6 +90,7 @@ div.banner-subject img {
 }
 div.lesson-image {
   margin-bottom: 1rem;
+  text-align: center;
 }
 div.subject-info {
   margin-top: 10px;
