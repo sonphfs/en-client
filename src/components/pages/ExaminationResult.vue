@@ -5,7 +5,7 @@
       <div class="col-md-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h3 class="title">Kết quả bài thi </h3>
+            <h3 class="title">Kết quả bài thi</h3>
             <h3 class="title examination"></h3>
           </div>
           <div class="row score-table">
@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <h3 style="text-align: center;"> BIỂU ĐỒ ĐIỂM SỐ</h3>
+          <h3 style="text-align: center;">BIỂU ĐỒ ĐIỂM SỐ</h3>
           <div class="width80">
             <chart :examCode="this.$route.params.code"></chart>
           </div>
@@ -48,7 +48,7 @@
 
 <script>
 import TitleHeader from "@/components/layouts/TitleHeader.vue";
-import Chart from '@/components/charts/ScoreChart'
+import Chart from "@/components/charts/ScoreChart";
 import request from "@/utils/request";
 export default {
   name: "ExaminationResult",
@@ -59,13 +59,13 @@ export default {
       reading_score: 0,
       not_selected: 0,
       total_question: 0,
-      type: {full : 200, short: 20},
-      examination: null,
+      type: { full: 200, short: 20 },
+      examination: null
     };
   },
   components: {
     TitleHeader,
-    Chart
+    Chart,
   },
   created() {
     request({
@@ -77,8 +77,8 @@ export default {
         this.reading_score = res.data.result_data.reading_score;
         this.listening_score = res.data.result_data.listening_score;
         this.not_selected = res.data.result_data.not_selected;
-        this.total_question =  res.data.result_data.total_question;
-        this.examination =  res.data.result_data.examination;
+        this.total_question = res.data.result_data.total_question;
+        this.examination = res.data.result_data.examination;
       })
       .catch({});
   },
@@ -92,7 +92,7 @@ export default {
       return correctCount;
     },
     wrongAnswerCount() {
-      return this.total_question - this.not_selected - this.correctAnswerCount
+      return this.total_question - this.not_selected - this.correctAnswerCount;
     }
   },
   methods: {}
@@ -126,6 +126,7 @@ div.score-label {
   padding: 5px 10px;
   max-width: 130px;
   margin: 0 auto;
+  border-radius: 10px;
 }
 div.score-value {
   width: 80px;

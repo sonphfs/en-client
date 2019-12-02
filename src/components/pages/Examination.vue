@@ -1,13 +1,17 @@
 <template>
-  <div class="row examination">
-    <Part1 :questions="filterQuestionByStep(1)" v-show="step == 1" @nextStep="receiveStep"></Part1>
-    <Part2 :questions="filterQuestionByStep(2)" v-show="step == 2" @nextStep="receiveStep"></Part2>
-    <Part3 :questions="filterQuestionByStep(3)" v-show="step == 3" @nextStep="receiveStep"></Part3>
-    <Part4 :questions="filterQuestionByStep(4)" v-show="step == 4" @nextStep="receiveStep"></Part4>
-    <Part5 :questions="filterQuestionByStep(5)" v-show="step == 5" @nextStep="receiveStep"></Part5>
-    <Part6 :questions="filterQuestionByStep(6)" v-show="step == 6" @nextStep="receiveStep"></Part6>
-    <Part7 :questions="filterQuestionByStep(7)" v-show="step == 7" @nextStep="receiveStep"></Part7>
-    <SidebarComponent :step="this.step" @updateStep="receiveStep" @nextStep="receiveStep"></SidebarComponent>
+  <div>
+    <TitleHeader></TitleHeader>
+    <RatioHeader></RatioHeader>
+    <div class="row">
+      <Part1 :questions="filterQuestionByStep(1)" v-show="step == 1" @nextStep="receiveStep"></Part1>
+      <Part2 :questions="filterQuestionByStep(2)" v-show="step == 2" @nextStep="receiveStep"></Part2>
+      <Part3 :questions="filterQuestionByStep(3)" v-show="step == 3" @nextStep="receiveStep"></Part3>
+      <Part4 :questions="filterQuestionByStep(4)" v-show="step == 4" @nextStep="receiveStep"></Part4>
+      <Part5 :questions="filterQuestionByStep(5)" v-show="step == 5" @nextStep="receiveStep"></Part5>
+      <Part6 :questions="filterQuestionByStep(6)" v-show="step == 6" @nextStep="receiveStep"></Part6>
+      <Part7 :questions="filterQuestionByStep(7)" v-show="step == 7" @nextStep="receiveStep"></Part7>
+      <SidebarComponent :step="this.step" @updateStep="receiveStep" @nextStep="receiveStep"></SidebarComponent>
+    </div>
   </div>
 </template>
 
@@ -21,6 +25,8 @@ import Part5 from "@/components/examinations/Part5Component";
 import Part6 from "@/components/examinations/Part6Component";
 import Part7 from "@/components/examinations/Part7Component";
 import SidebarComponent from "@/components/examinations/SidebarComponent";
+import TitleHeader from "@/components/layouts/TitleHeader.vue";
+import RatioHeader from "@/components/layouts/RatioHeader.vue";
 export default {
   name: "Examination",
   components: {
@@ -31,7 +37,9 @@ export default {
     Part5,
     Part6,
     Part7,
-    SidebarComponent
+    SidebarComponent,
+    TitleHeader,
+    RatioHeader
   },
   data() {
     return {

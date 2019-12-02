@@ -26,11 +26,6 @@
             <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/list-exam">Thi thử</a></button>
           </div>
         </ul>
-        <form class="ml-auto search-form d-none d-md-block" action="#">
-          <div class="form-group">
-            <input type="search" class="form-control input-search" placeholder="Search Here" />
-          </div>
-        </form>
         <ul class="navbar-nav ml-auto" v-if="user.email">
           <li class="nav-item dropdown">
             <a
