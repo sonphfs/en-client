@@ -10,7 +10,7 @@ const ifAuthenticated = async (to, from, next) => {
       return
     }
     next('/login')
-  }
+}
 
 // import layouts
 import MainLayout from "@/components/main_layouts/MainLayout";
@@ -29,7 +29,8 @@ const routes = [
         meta: {
             layout: BlankLayout
         },
-        beforeEnter: ifAuthenticated
+        beforeEnter: ifAuthenticated,
+        redirect: "/dashboard"
     },
     {
         path: '/dashboard',

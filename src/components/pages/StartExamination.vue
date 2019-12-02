@@ -127,9 +127,13 @@ export default {
         cancelButtonColor: "#3085d6"
       }).then(result => {
         if (result.value) {
+          this.resetLocalStorage();
           return this.$router.push("/exam/" + this.$route.params.code);
         }
       });
+    },
+    resetLocalStorage() {
+      localStorage.clear();
     }
   }
 };

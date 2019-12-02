@@ -23,11 +23,7 @@
             </div>
           </div>
           <div class="dropdown" @mouseover="test_active = true" @mouseleave="test_active = false">
-            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Thi thử</button>
-            <div class="dropdown-menu show" v-show="test_active">
-              <a class="dropdown-item" href="/list-exam">Thi thử toeic</a>
-              <a class="dropdown-item" href="#">Thi rút gọn</a>
-            </div>
+            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/list-exam">Thi thử</a></button>
           </div>
         </ul>
         <form class="ml-auto search-form d-none d-md-block" action="#">

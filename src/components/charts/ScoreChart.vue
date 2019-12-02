@@ -1,5 +1,5 @@
 <template>
-  <chart :chart-data="datacollection" :width="301" :height="300"></chart>
+  <chart :chart-data="datacollection" :options="options"></chart>
 </template>
     <script>
 import Chart from "@/charts/line-chart";
@@ -13,11 +13,40 @@ export default {
     return {
       datacollection: null,
       logData: [],
-      code: null,
+      options: {
+        responsive: true,
+        legend: {
+          // display: false
+        },
+        layout: {
+          padding: 10
+        },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                display: true
+              }
+            }
+          ],
+          yAxes: [
+            {
+              gridLines: {
+                display: true
+              },
+              ticks: {
+                min: 0,
+                max: 990
+              }
+            }
+          ]
+        }
+      },
+      code: null
     };
   },
   created() {
-    this.code = this.examCode
+    this.code = this.examCode;
     request({
       url: "exam-log/" + this.code,
       method: "get"
@@ -26,16 +55,24 @@ export default {
         this.logData = res.data.result_data.Logs;
         let labels = [];
         let data = [];
+        let target = [];
         this.logData.forEach((e, i) => {
           labels.push(i + 1);
           data.push(e.total_score);
+          target.push(800)
         });
         this.datacollection = {
           labels: labels,
           datasets: [
             {
               label: "Score",
+              backgroundColor: "#f87979",
               data: data
+            },
+            {
+              label: "Target",
+              backgroundColor: "#42b983",
+              data: target
             }
           ]
         };
