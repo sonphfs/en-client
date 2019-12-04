@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-12 subject-wapper" >
+    <div class="col-md-12 subject-wapper">
       <div class="banner-subject">
         <h3>HỌC TỪ VỰNG THEO CHỦ ĐỀ</h3>
         <p>
@@ -11,12 +11,12 @@
       <div class="body-subject">
         <div class="subject-info">
           Chủ đề
-          <span class="subject-count">50</span>
+          <span class="subject-count">{{ subjects.total }}</span>
           <hr />
         </div>
         <div class="subject-list">
           <div class="row subject-item">
-            <div class="col-md-4 l-item" v-for="subject in subjects">
+            <div class="col-md-4 l-item" v-for="subject in subjects.data">
               <div class="card">
                 <div class="card-body">
                   <div class="lesson-image">
@@ -26,43 +26,66 @@
                     <p class="lesson-name">{{subject.name}}</p>
                   </div>
                   <div class="lesson-button">
-                    <button type="button" class="btn btn-success" @click="start(subject.id)">Học ngay</button>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      @click="start(subject.id)"
+                    >Học ngay</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <paginate
+          :page-count="pageCount"
+          :prev-text="'Prev'"
+          :next-text="'Next'"
+          :container-class="'pagination'"
+          :page-class="'page-item'"
+        ></paginate>
       </div>
     </div>
   </div>
 </template>
 <script>
-import request from '@/utils/request'
+import request from "@/utils/request";
 export default {
   name: "ListSubject",
   data() {
     return {
-        subjects: []
-    }
+      subjects: {},
+      last_page: 0
+    };
   },
   methods: {
-    start(subjectId){
-        return this.$router.push('/subject/'+ subjectId)
+    start(subjectId) {
+      return this.$router.push("/subject/" + subjectId);
+    },
+    getSubjects(page = 1) {
+      request({
+        url: "/subjects?page=" + page,
+        method: "get"
+      })
+        .then(res => {
+          this.subjects = res.data.result_data;
+          this.last_page = this.subjects.last_page
+        })
+        .catch(err => {
+          // eslint-disable-next-line
+          console.log(err.res);
+        });
     }
   },
   created() {
-    request({
-      url: '/subjects',
-      method: 'get'
-    }).then(res => {
-      this.subjects = res.data.result_data
-    }).catch(err => {
-        // eslint-disable-next-line
-        console.log(err.res)
-    })
+    this.getSubjects()
+  },
+  computed:{
+    pageCount(){
+      return this.last_page
+    }
   }
-}
+};
 </script> 
 <style scoped>
 div.subject-wapper {
@@ -91,8 +114,8 @@ div.subject-info {
 div.lesson-button {
   text-align: center;
 }
-div.lesson-button button.btn-success{
-      border-radius: 30px;
+div.lesson-button button.btn-success {
+  border-radius: 30px;
 }
 div.lesson-image {
   text-align: center;

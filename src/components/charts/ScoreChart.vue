@@ -66,12 +66,12 @@ export default {
           datasets: [
             {
               label: "Score",
-              backgroundColor: "#f87979",
+              backgroundColor: "#42b983",
               data: data
             },
             {
               label: "Target",
-              backgroundColor: "#42b983",
+              backgroundColor: "#f87979",
               data: target
             }
           ]

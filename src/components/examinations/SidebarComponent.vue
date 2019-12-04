@@ -50,7 +50,7 @@
                 </li>
               </ul>
             </div>
-            <p> {{hours}} giờ: {{minutes}} phút: {{seconds}} giây</p>
+            <p>{{hours}} giờ: {{minutes}} phút: {{seconds}} giây</p>
           </div>
         </div>
       </div>
@@ -60,12 +60,13 @@
 
 <script>
 import request from "@/utils/request";
+import Swal from "sweetalert2";
 export default {
   name: "SidebarComponent",
   props: ["step"],
   data() {
     return {
-      testTime: 2 * 60 * 60 - 1,
+      testTime: 30 - 1,
       hours: 2,
       minutes: 0,
       seconds: 0,
@@ -86,6 +87,32 @@ export default {
     },
     updateStepToParent() {
       this.$emit("updateStep", this.currentStep);
+    },
+    submitExam() {
+      let data = {
+        listening_questions: JSON.parse(
+          localStorage.getItem("result_listening")
+        ),
+        reading_questions: JSON.parse(localStorage.getItem("result_reading")),
+        examination_code: this.$route.params.code
+      };
+      console.log(data);
+      request({
+        url: "/submit-examination",
+        method: "post",
+        data
+      })
+        .then(res => {
+          console.log(res.data.result_data);
+          let resultId = res.data.result_data.examination_log_id;
+          this.$router.push(
+            "/examination/result/" + resultId + "/" + this.$route.params.code
+          );
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      console.log(data);
     }
   },
   created() {
@@ -97,20 +124,8 @@ export default {
     },
     testTime() {
       if (this.testTime === 0) {
-        let data = {
-          listening_questions: JSON.parse(
-            localStorage.getItem("result_listening")
-          ),
-          reading_questions: JSON.parse(localStorage.getItem("result_reading")),
-          examination_id: this.$route.params.code
-        };
-        request({
-          url: "/submit-examination",
-          method: "post",
-          data
-        })
-          .then()
-          .catch()
+        this.submitExam();
+        Swal.fire("Hết thời gian!", "Bài thi của bạn đã được nộp. Kết quả được gửi kèm trong email!", "info");
       }
     }
   }
@@ -118,7 +133,7 @@ export default {
 </script>
 
 <style scoped>
-  .page-link {
-    padding: 0.5rem 0.75rem;
-  }
+.page-link {
+  padding: 0.5rem 0.75rem;
+}
 </style>

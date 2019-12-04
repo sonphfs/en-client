@@ -39,18 +39,18 @@
                 </tr>
               </tbody>
             </SortedTable>
+            <paginate
+              :page-count="pageCount"
+              :click-handler="getToeicHistories"
+              :prev-text="'Prev'"
+              :next-text="'Next'"
+              :container-class="'pagination'"
+              :page-class="'page-item'"
+            ></paginate>
           </div>
         </div>
       </div>
     </div>
-    <paginate
-          :page-count="pageCount"
-          :click-handler="getToeicHistories"
-          :prev-text="'Prev'"
-          :next-text="'Next'"
-          :container-class="'pagination'"
-          :page-class="'page-item'"
-        ></paginate>
   </div>
 </template>
 
