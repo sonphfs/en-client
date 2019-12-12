@@ -2,6 +2,7 @@
   <div>
     <div class="col-md-12">
       <div class="card">
+        <circular-count-down-timer :initial-value="15" :steps="15" :size="60" :second-label="''"></circular-count-down-timer>
         <div class="card-body title-question">
           <p class="question-content">{{ question.content }}</p>
           <p class="pronun">/färmər/</p>
@@ -38,7 +39,8 @@ export default {
         correct_answer: "A"
       },
       isChoose: false,
-      isCorrect: false
+      isCorrect: false,
+      selected: false
     };
   },
   created() {
@@ -48,19 +50,22 @@ export default {
   },
   methods: {
     choose(answer) {
-      if (answer != this.question.correct_answer) {
-        console.log(
-          event.target.setAttribute("class", "answer-item btn-danger")
-        );
-      } else {
-        console.log(
-          event.target.setAttribute("class", "answer-item btn-success")
-        );
+      if (this.selected != true) {
+        this.selected = true;
+        if (answer != this.question.correct_answer) {
+          console.log(
+            event.target.setAttribute("class", "answer-item btn-danger")
+          );
+        } else {
+          console.log(
+            event.target.setAttribute("class", "answer-item btn-success")
+          );
+        }
+        let that = this;
+        setTimeout(function() {
+          that.nextQuestion();
+        }, 1000);
       }
-      let that = this
-      setTimeout(function() {
-        that.nextQuestion();
-      }, 1000);
     },
     nextQuestion() {
       this.$emit("nextQuestion");
@@ -103,4 +108,7 @@ div.answer-item {
 div.answer-item:hover {
   background-color: #dde4eb;
 }
+</style>
+<style>
+ #container .item div { text-align: center }
 </style>
