@@ -23,7 +23,10 @@
             </div>
           </div>
           <div class="dropdown" @mouseover="test_active = true" @mouseleave="test_active = false">
-            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/list-exam">Thi thử</a></button>
+            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/list-exam">Làm bài thi</a></button>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/contact">Liên hệ</a></button>
           </div>
         </ul>
         <ul class="navbar-nav ml-auto" v-if="user.email">
@@ -74,7 +77,7 @@
         </ul>
         <ul class="navbar-nav ml-auto nav-auth" v-if="!user.email">
           <a class="main-header-button-auth btn-login" href="/login">Đăng nhập</a>
-          <a class="main-header-button-auth btn-register" href="/">Đăng ký</a>
+          <a class="main-header-button-auth btn-register" href="/register">Đăng ký</a>
         </ul>
         <button
           class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"

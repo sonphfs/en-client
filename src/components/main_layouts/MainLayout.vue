@@ -9,12 +9,13 @@
         <Footer></Footer>
       </div>
     </div>
+    <notifications group="learningWord" position="bottom right"/>
   </div>
 </template>
 
 <script>
 import request from "@/utils/request";
-import { getToken } from "@/utils/auth";
+import { getToken, removeToken } from "@/utils/auth";
 import Header from "@/components/layouts/Header.vue";
 import Footer from "@/components/layouts/Footer.vue";
 
@@ -30,6 +31,7 @@ export default {
     };
   },
   created() {
+    this.$route.meta.isAuthenticated = false;
     if (getToken()) {
       request({
         url: "/user/infos",
@@ -37,8 +39,10 @@ export default {
       })
         .then(res => {
           this.user = res.data.result_data;
+          this.$route.meta.isAuthenticated = true;
         })
         .catch(err => {
+          removeToken()
           // eslint-disable-next-line
           console.log(err.res)
         });

@@ -19,6 +19,7 @@ import BlankLayout from "@/components/main_layouts/BlankLayout";
 // import pages
 import LandingPage from '@/components/landing_pages/Index.vue'
 import Dashboard from '@/components/pages/DemoComponent.vue'
+import Contact from '@/components/pages/Contact.vue'
 import Login from "@/components/pages/Login";
 
 
@@ -30,7 +31,7 @@ const routes = [
             layout: BlankLayout
         },
         beforeEnter: ifAuthenticated,
-        redirect: "/dashboard"
+        // redirect: "/dashboard"
     },
     {
         path: '/dashboard',
@@ -43,6 +44,13 @@ const routes = [
         path: '/login',
         meta : {
             layout: Login
+        }
+    },
+    {
+        path: '/register',
+        component: () => import("@/components/pages/Register"),
+        meta : {
+            layout: MainLayout
         }
     },
     {
@@ -77,6 +85,13 @@ const routes = [
     {
         path: '/start-exam/:code',
         component: () => import("@/components/pages/StartExamination"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
+        path: '/contact',
+        component: Contact,
         meta : {
             layout: MainLayout
         }
