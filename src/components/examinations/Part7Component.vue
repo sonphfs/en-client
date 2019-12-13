@@ -33,7 +33,8 @@ export default {
   props: ["questions"],
   data() {
     return {
-      result: []
+      result: [],
+      isSubmit: false
     };
   },
   components: {
@@ -41,7 +42,10 @@ export default {
   },
   methods: {
     getAnswer(result) {
-      this.result = localStorage.getItem('result_reading') != null ? JSON.parse(localStorage.getItem('result_reading')) : [];
+      this.result =
+        localStorage.getItem("result_reading") != null
+          ? JSON.parse(localStorage.getItem("result_reading"))
+          : [];
       var resultData = this.result;
       this.result = resultData.filter(e => {
         return e.question_id != result.question_id;
@@ -52,8 +56,8 @@ export default {
     sendAnswersQuestionToExam() {
       this.$emit("resultReceivedFromPart", this.result);
     },
-    confirmSubmit(){
-        Swal.fire({
+    confirmSubmit() {
+      Swal.fire({
         title: "Confirm",
         text:
           "Once you submit, you will no longer be able to change your answers for this attempt.",
@@ -64,14 +68,15 @@ export default {
         cancelButtonColor: "#3085d6"
       }).then(result => {
         if (result.value) {
-          this.submitExam()
+          if (this.isSubmit == false) this.submitExam();
         }
       });
-    }
-    ,
+    },
     submitExam() {
       let data = {
-        listening_questions: JSON.parse(localStorage.getItem("result_listening")),
+        listening_questions: JSON.parse(
+          localStorage.getItem("result_listening")
+        ),
         reading_questions: JSON.parse(localStorage.getItem("result_reading")),
         examination_code: this.$route.params.code
       };
@@ -82,9 +87,12 @@ export default {
         data
       })
         .then(res => {
+          this.isSubmit = true;
           console.log(res.data.result_data);
-          let resultId = res.data.result_data.examination_log_id
-          this.$router.push('/examination/result/'+ resultId+ "/" +this.$route.params.code)
+          let resultId = res.data.result_data.examination_log_id;
+          this.$router.push(
+            "/examination/result/" + resultId + "/" + this.$route.params.code
+          );
         })
         .catch(err => {
           console.log(err);

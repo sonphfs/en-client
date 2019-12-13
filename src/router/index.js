@@ -31,7 +31,7 @@ const routes = [
             layout: BlankLayout
         },
         beforeEnter: ifAuthenticated,
-        // redirect: "/dashboard"
+        redirect: "/dashboard"
     },
     {
         path: '/dashboard',

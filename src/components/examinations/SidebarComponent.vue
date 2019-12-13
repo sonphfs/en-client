@@ -67,10 +67,11 @@ export default {
   data() {
     return {
       testTime: 30 - 1,
-      hours: 2,
+      hours: 0,
       minutes: 0,
       seconds: 0,
-      currentStep: this.step
+      currentStep: this.step,
+      isSubmit: false
     };
   },
   methods: {
@@ -79,7 +80,9 @@ export default {
         this.hours = Math.floor(this.testTime / 3600);
         this.minutes = Math.floor((this.testTime % 3600) / 60);
         this.seconds = (this.testTime % 3600) % 60;
-        this.testTime--;
+        if(this.testTime > 0) {
+          this.testTime--;
+        }
       }, 1000);
     },
     changeStep(step) {
@@ -96,13 +99,13 @@ export default {
         reading_questions: JSON.parse(localStorage.getItem("result_reading")),
         examination_code: this.$route.params.code
       };
-      console.log(data);
       request({
         url: "/submit-examination",
         method: "post",
         data
       })
         .then(res => {
+          this.isSubmit = true;
           console.log(res.data.result_data);
           let resultId = res.data.result_data.examination_log_id;
           this.$router.push(
@@ -116,7 +119,9 @@ export default {
     }
   },
   created() {
-    this.countdownTimeStart();
+    if (this.testTime > 0) {
+      this.countdownTimeStart();
+    }
   },
   watch: {
     currentStep() {
@@ -124,8 +129,13 @@ export default {
     },
     testTime() {
       if (this.testTime === 0) {
+        if (this.isSubmit == false) this.submitExam();
         this.submitExam();
-        Swal.fire("Hết thời gian!", "Bài thi của bạn đã được nộp. Kết quả được gửi kèm trong email!", "info");
+        Swal.fire(
+          "Hết thời gian!",
+          "Bài thi của bạn đã được nộp. Kết quả được gửi kèm trong email!",
+          "info"
+        );
       }
     }
   }

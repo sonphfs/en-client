@@ -5,25 +5,7 @@
         <h3>Part 2</h3>
         <p>
           <strong>Directions:</strong> You will hear a question or statement and three responses spoken in English. They will be spoken only one time and will not be printed in your test book. Select the best response to the question or statement and mark the letter (A), (B), or (C) on your answer sheet.
-        </p>
-        <div v-for="question in questions" v-if="question.part == 2&&question.no==0">
-          <p>
-            <strong>Example</strong>
-          </p>
-          <p>
-            You will hear:
-            <strong>{{question.content}}</strong>
-          </p>
-          <p>You will also hear:</p>
-          <ul>
-            <li>(A) {{question.answer_A}}</li>
-            <li>(B) {{question.answer_B}}</li>
-            <li>(C) {{question.answer_C}}</li>
-          </ul>
-          <p>The best response to the question {{question.content}} is choice ({{question.correct_answer}}), "I am looking for something," so ({{question.correct_answer}}) is the correct answer. You should mark answer ({{question.correct_answer}}) on you answer sheet.</p>
-          <hr />
-        </div>
-        <p></p>
+        </p><hr>
         <Question
           v-for="question in questions"
           :question="question"

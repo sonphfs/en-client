@@ -8,21 +8,7 @@
         <p>
           <strong>Directions:</strong> For each question in this part, you will hear four statements about a picture in your test book. When you hear the statements, you must select the one statement that best describes what you see in the picture. Then find the number of the question on your answer sheet and mark your answer. The statements will not be printed in your test book and will be spoken only one time. Look at the example item below.
         </p>
-        <div v-for="question in questions" v-if="question.part == 1 && question.no == 0">
-          <p>
-            <strong>Example:</strong>
-          </p>
-          <p>
-            <img
-              :src="serverUrl + question.image"
-              alt="Example Image"
-              width="300px"
-              height="300px"
-            />
-          </p>
-          <p>Statement ({{question.correct_answer}}), "They're standing near the table," is the best description of the picture, so you should select answer ({{question.correct_answer}}) and mark it on your answer sheet.</p>
-          <hr />
-        </div>
+        <hr>
         <Question
           v-for="question in questions"
           :question="question"
