@@ -24,20 +24,20 @@
             </p>
             <div class="general-content">
               <div class="testing-result-percent">
-                <TestResultChart :score="80"></TestResultChart>
+                <TestResultChart :examLogId="this.$route.params.examLogId"></TestResultChart>
               </div>
               <div class="general-detail">
                 <p class="detail-item">
                   <span class="detail-icon icon-1"></span>Số câu đúng:
-                  <span class="detail-value">55</span>
+                  <span class="detail-value" v-if="examLog.exam_result">{{examLog.exam_result.correct_answer_count}}</span>
                 </p>
                 <p class="detail-item">
                   <span class="detail-icon icon-2"></span>Số câu sai:
-                  <span class="detail-value">12</span>
+                  <span class="detail-value" v-if="examLog.exam_result">{{examLog.exam_result.total_incorrect}}</span>
                 </p>
                 <p class="detail-item">
                   <span class="detail-icon icon-3"></span>Số câu chưa chọn:
-                  <span class="detail-value">8</span>
+                  <span class="detail-value" v-if="examLog.exam_result">{{examLog.exam_result.not_selected}}</span>
                 </p>
               </div>
             </div>
