@@ -8,7 +8,7 @@ export default {
   components: {
     Chart
   },
-  props: ["examCode"],
+  props: ["examLogId"],
   data() {
     return {
       datacollection: null,
@@ -36,30 +36,28 @@ export default {
               },
               ticks: {
                 min: 0,
-                max: 990
+                max: 100
               }
             }
           ]
         }
-      },
-      code: null
+      }
     };
   },
   created() {
-    this.code = this.examCode;
     request({
-      url: "exam-log/" + this.code,
+      url: "/test-log/" + this.$route.params.examLogId,
       method: "get"
     })
       .then(res => {
-        this.logData = res.data.result_data.Logs;
+        this.logData = res.data.result_data.exam_histories;
         let labels = [];
         let data = [];
         let target = [];
         this.logData.forEach((e, i) => {
           labels.push(i + 1);
           data.push(e.total_score);
-          target.push(800);
+          target.push(80);
         });
         this.datacollection = {
           labels: labels,
@@ -90,5 +88,3 @@ export default {
   }
 };
 </script>
-<style>
-</style>

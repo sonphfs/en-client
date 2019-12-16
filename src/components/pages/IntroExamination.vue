@@ -34,7 +34,7 @@
                   Một lưu ý nữa là các câu hỏi trong
                   <strong>đề thi Toeic</strong> không có mức điểm giống nhau, nên cũng cần phải biết thêm về
                   <a
-                    href="https://www.anhngumshoa.com/tin-tuc/thang-diem-toeic-cach-tinh-diem-toeic-format-moi-chuan-nhat-34838.html"
+                    href="#"
                   >
                     <span style="color:#FC5454;">
                       <strong>thang điểm Toeic</strong>

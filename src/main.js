@@ -5,6 +5,7 @@ import SortedTablePlugin from "vue-sorted-table";
 import Paginate from 'vuejs-paginate'
 import CircularCountDownTimer from "vue-circular-count-down-timer";
 import Notifications from 'vue-notification'
+
  
 Vue.use(Notifications)
 Vue.use(CircularCountDownTimer);

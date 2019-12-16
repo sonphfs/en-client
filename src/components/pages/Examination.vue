@@ -81,6 +81,7 @@ export default {
     }
   },
   created() {
+    let bindThis = this
     request({
       url: "/get-exam/" + this.$route.params.code,
       method: "get"
@@ -88,6 +89,7 @@ export default {
       .then(res => {
         console.log(res.data.result_data);
         this.examination = res.data.result_data;
+        bindThis.$route.meta.examType = this.examination.type
         this.partData = this.examination.questions;
         this.initResult();
       })

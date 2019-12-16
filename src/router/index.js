@@ -171,6 +171,13 @@ const routes = [
         }
     },
     {
+        path: '/test/result/:examLogId/:code',
+        component: () => import("@/components/pages/TestResult"),
+        meta : {
+            layout: MainLayout
+        }
+    },
+    {
         path: '/start-test/:id',
         component: () => import("@/components/pages/RegularTest"),
         meta : {

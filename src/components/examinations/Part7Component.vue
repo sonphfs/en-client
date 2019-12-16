@@ -90,9 +90,11 @@ export default {
           this.isSubmit = true;
           console.log(res.data.result_data);
           let resultId = res.data.result_data.examination_log_id;
-          this.$router.push(
-            "/examination/result/" + resultId + "/" + this.$route.params.code
-          );
+          if(this.$route.meta.examType == 1){
+            this.$router.push("/test/result/" + resultId + "/" + this.$route.params.code)
+          }else{
+            this.$router.push("/examination/result/" + resultId + "/" + this.$route.params.code)
+          }
         })
         .catch(err => {
           console.log(err);

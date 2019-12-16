@@ -38,7 +38,6 @@
             <chart :examCode="this.$route.params.code"></chart>
           </div>
           <div class="button-center">
-            <button type="button" class="btn btn-secondary">XEM LẠI BÀI THI</button>
           </div>
         </div>
       </div>
