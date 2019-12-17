@@ -2,7 +2,7 @@
   <div>
     <div class="col-md-12">
       <div class="card">
-        <circular-count-down-timer :initial-value="countDownTime" :steps="countDownTime" :size="60" :second-label="''"></circular-count-down-timer>
+        <circular-count-down-timer :key="Math.random()" :initial-value="countDownTime" :steps="countDownTime" :size="60" :second-label="''"></circular-count-down-timer>
         <div class="card-body title-question">
           <p class="question-content">{{ question.content }}</p>
           <p class="pronun">/färmər/</p>
@@ -48,6 +48,7 @@ export default {
     if (this.item != undefined) {
       this.question = this.item;
     }
+    this.countDownTime = 15;
   },
   methods: {
     choose(answer) {
@@ -55,19 +56,21 @@ export default {
         this.selected = true;
         this.countDownTime = 15
         if (answer != this.question.correct_answer) {
-          console.log(
             event.target.setAttribute("class", "answer-item btn-danger")
-          );
         } else {
-          console.log(
             event.target.setAttribute("class", "answer-item btn-success")
-          );
         }
+        this.getAnswerData({"question_id": this.question.id, "choose": answer})
         let that = this;
         setTimeout(function() {
           that.nextQuestion();
         }, 1000);
       }
+    },
+    getAnswerData(data){
+      let exam_data = JSON.parse(localStorage.getItem('exam_data'))
+      exam_data.push(data)
+      localStorage.setItem('exam_data',  JSON.stringify(exam_data))
     },
     nextQuestion() {
       this.$emit("nextQuestion");

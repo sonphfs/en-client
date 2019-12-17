@@ -1,6 +1,6 @@
 <template>
   <div id="myChart">
-    <pie-chart :data="chartData" :options="chartOptions" :plugins="ChartPlugins"></pie-chart>
+    <pie-chart :data="chartData" :key="Math.random()" :options="chartOptions" :plugins="ChartPlugins"></pie-chart>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
         hoverBorderWidth: "10px",
         legend: {
           display: false
-        }
+        },
       },
       ChartPlugins: [],
       chartData: {}
@@ -31,15 +31,15 @@ export default {
   },
   created() {
     this.getTestHistories();
-    this.bindChartData();
   },
   methods: {
-    async getTestHistories() {
+    getTestHistories() {
       request({
         url: "/exam/get-total-score/" + this.$route.params.examLogId,
         method: "get"
       }).then(res => {
         this.score = res.data.result_data.total_score;
+        this.bindChartData();
       });
     },
     bindChartData() {
@@ -64,7 +64,7 @@ export default {
           }
         }
       ];
-      console.log(bindThis.score)
+      console.log(this.score);
       this.chartData = {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
@@ -73,28 +73,14 @@ export default {
           {
             label: "Data One",
             backgroundColor: ["#41B883"],
-            data: [bindThis.score, 100 - bindThis.score]
+            data: [this.score, 100-this.score]
           }
         ]
       };
     }
   },
   watch: {
-    score(){
-      let bindThis = this;
-      this.chartData = {
-        hoverBackgroundColor: "red",
-        hoverBorderWidth: 10,
-        labels: ["result", ""],
-        datasets: [
-          {
-            label: "Data One",
-            backgroundColor: ["#41B883"],
-            data: [bindThis.score, 100 - bindThis.score]
-          }
-        ]
-      };
-    }
+    score() {}
   }
 };
 </script>
