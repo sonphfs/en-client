@@ -57,8 +57,8 @@ export default {
           .then(res => {
             this.user = res.data.result_data;
             this.$route.meta.isAuthenticated = true;
-            this.getRandomLearningWord();
-            this.getRandomWord();
+            // this.getRandomLearningWord();
+            // this.getRandomWord();
           })
           .catch(err => {
             removeToken();

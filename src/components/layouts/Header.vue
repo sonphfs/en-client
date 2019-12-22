@@ -9,24 +9,16 @@
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav">
           <div class="dropdown" @mouseover="word_active = true" @mouseleave="word_active = false">
-            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Từ vựng</button>
-            <div class="dropdown-menu show" v-show="word_active">
-              <a class="dropdown-item" href="/list-subject">Chủ đề</a>
-              <a class="dropdown-item" href="#">Kiểm tra</a>
-            </div>
+            <button class="btn btn-secondary  button-menu-top" type="button"><a href="/list-subject">Từ vựng</a></button>
           </div>
           <div class="dropdown" @mouseover="grammar_active = true" @mouseleave="grammar_active = false">
-            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button">Ngữ pháp</button>
-            <div class="dropdown-menu show" v-show="grammar_active">
-              <a class="dropdown-item" href="#">Bài học</a>
-              <a class="dropdown-item" href="#">Kiểm tra</a>
-            </div>
+            <button class="btn btn-secondary  button-menu-top" type="button"><a href="/list-subject">Ngữ pháp</a></button>
           </div>
           <div class="dropdown" @mouseover="test_active = true" @mouseleave="test_active = false">
-            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/list-exam">Làm bài thi</a></button>
+            <button class="btn btn-secondary  button-menu-top" type="button"><a href="/list-exam">Làm bài thi</a></button>
           </div>
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle button-menu-top" type="button"><a href="/contact">Liên hệ</a></button>
+            <button class="btn btn-secondary  button-menu-top" type="button"><a href="/contact">Liên hệ</a></button>
           </div>
         </ul>
         <ul class="navbar-nav ml-auto" v-if="user.email">

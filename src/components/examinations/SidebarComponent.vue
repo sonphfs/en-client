@@ -66,7 +66,7 @@ export default {
   props: ["step"],
   data() {
     return {
-      testTime: 120000 - 1,
+      testTime: 3600 - 1,
       hours: 0,
       minutes: 0,
       seconds: 0,

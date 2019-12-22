@@ -18,7 +18,7 @@ import BlankLayout from "@/components/main_layouts/BlankLayout";
 
 // import pages
 import LandingPage from '@/components/landing_pages/Index.vue'
-import Dashboard from '@/components/pages/DemoComponent.vue'
+import Dashboard from '@/components/pages/Dashboard.vue'
 import Contact from '@/components/pages/Contact.vue'
 import Login from "@/components/pages/Login";
 
@@ -135,16 +135,9 @@ const routes = [
         beforeEnter: ifAuthenticated
     },
     {
-        path: '/list',
-        component: () => import("@/components/pages/ListContent"),
-        meta : {
-            layout: MainLayout
-        }
-    },
-    {
         
-        path: '/lesson-complete',
-        component: () => import("@/components/pages/LessonComplete"),
+        path: '/list-lesson',
+        component: () => import("@/components/pages/ListLesson"),
         meta : {
             layout: MainLayout
         }

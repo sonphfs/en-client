@@ -2,7 +2,7 @@
   <div>
     <h5>{{question.no}}. {{ question.content }}</h5>
     <p v-if="question.image">
-      <img v-bind:src="serverUrl + question.image" width="300px" height="300px"/>
+      <img src="https://tienganhmoingay.com/static/ToeicTests/images/Ets_Toeic_2019_Test_1/Ets_Toeic_2019_Test_1_2.png" width="300px" height="300px"/>
     </p>
     <div class="answer">
       <div class="r0">

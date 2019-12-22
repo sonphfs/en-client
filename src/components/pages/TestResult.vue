@@ -1,7 +1,7 @@
 <template>
   <div class="row" style="margin: 0 auto">
     <div class="col-md-12">
-      <div class="body-subject">
+      <!-- <div class="body-subject">
         <div class="subject-info">
           <div class="overview">Chủ đề Constracts</div>
           <div class="selected-nav">
@@ -11,7 +11,7 @@
           </div>
         </div>
         <hr />
-      </div>
+      </div> -->
     </div>
     <div class="col-md-5 grid-margin">
       <div class="card">
