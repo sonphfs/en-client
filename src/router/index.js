@@ -158,7 +158,7 @@ const routes = [
         }
     },
     {
-        path: '/test/:id',
+        path: '/test/:type/:id',
         component: () => import("@/components/pages/Test"),
         meta : {
             layout: MainLayout
@@ -172,7 +172,7 @@ const routes = [
         }
     },
     {
-        path: '/start-test/:id',
+        path: '/start-test/:type/:id',
         component: () => import("@/components/pages/RegularTest"),
         meta : {
             layout: MainLayout

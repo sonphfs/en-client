@@ -20,7 +20,7 @@
             <p class="general-title">Kết quả kiểm tra</p>
             <p class="general-description">
               Lần thứ:
-              <span class="des-number">3</span>
+              <span class="des-number" v-if="examLog.exam_histories">{{examLog.exam_histories.length}}</span>
             </p>
             <div class="general-content">
               <div class="testing-result-percent">

@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     start(subjectId) {
-      return this.$router.push("/subject/" + subjectId);
+      return this.$router.push("/subject/lesson/" + subjectId);
     },
     getSubjects(page = 1) {
       request({

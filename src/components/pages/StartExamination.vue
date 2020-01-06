@@ -36,10 +36,10 @@
       <div class="card">
         <div class="card-body" style="padding-left: 80px;">
           <div class="title">
-            <h3>Thi thử TOEIC</h3>
+            <h3>Làm bài thi</h3>
           </div>
           <div class="title examination">
-            <h3>Đề ETS TOEIC 2019 TEST 1</h3>
+            <h3>{{ exam.title}}</h3>
           </div>
           <h3>Chuẩn bị:</h3>
           <ul>
@@ -64,17 +64,17 @@
                 class="video-js"
                 title="sample01.mp3"
               >
-                <source src="https://enza.com.vn/toeic/audio/sample/sample01.mp3" type="audio/mp3" />https://enza.com.vn/toeic/audio/sample/sample01.mp3
+                <source src="https://enza.com.vn/toeic/audio/sample/sample01.mp3" type="audio/mp3" />
               </audio>
             </div>
           </div>
           <h3>Nội dung các phần thi:</h3>
           <ul>
             <li>
-              <strong>Phần thi Nghe hiểu</strong> (TOEIC Listening): gồm 100 câu.
+              <strong>Phần thi Nghe hiểu</strong>
             </li>
             <li>
-              <strong>Phần thi Đọc hiểu</strong> (TOEIC Listening): gồm 100 câu.
+              <strong>Phần thi Đọc hiểu</strong>
             </li>
           </ul>
           <h3>Khi làm bài:</h3>
@@ -93,12 +93,12 @@
           <ul>
             <li>
               Với mỗi bài thi: Bạn được phép làm
-              <strong>03 lần</strong>. Tuy nhiên để có kết quả chính xác bạn chỉ nên làm
+              <strong>không giới hạn</strong>. Tuy nhiên để có kết quả chính xác bạn chỉ nên làm
               <strong>01 lần.</strong>
             </li>
             <li>Nếu kiểm tra trình độ, bạn đừng làm đi làm lại một đề vì kết quả sẽ không phản ánh đúng mức độ hiện tại của bạn.</li>
           </ul>
-          <h3>Thời gian làm bài: 120 phút</h3>
+          <h3>Thời gian làm bài: {{getTime}} phút</h3>
         </div>
         <div class="align-center">
           <button class="btn btn-primary" @click="start()">START EXAM</button>
@@ -110,15 +110,21 @@
 
 <script>
 import Swal from "sweetalert2";
+import request from "@/utils/request";
 export default {
   name: "StartExamination",
   components: {},
+  data(){
+      return {
+        exam: {}
+      }
+  },
   methods: {
     start() {
       Swal.fire({
-        title: "Start attempt",
+        title: "Bắt đầu làm bài",
         text:
-          "The exam has a time limit of 120 mins. Time will count down from the moment you start your attempt and you must submit before it expires. Are you sure that you wish to start now?",
+          "Thời gian sẽ đếm ngược kể từ thời điểm bạn bắt đầu và bạn phải gửi trước khi hết hạn. Bạn có chắc chắn rằng bạn muốn bắt đầu bây giờ?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "START ATTEMPT",
@@ -134,6 +140,29 @@ export default {
     },
     resetLocalStorage() {
       localStorage.clear();
+    },
+    getExamInfos(){
+      request({
+        url: "/get-exam/" + this.$route.params.code,
+        method: "get"
+      }).then(res => {
+          console.log(res)
+          this.exam = res.data.result_data
+      }).catch(err => {
+
+      })
+    },
+  },
+  created(){
+    this.getExamInfos()
+  },
+  computed: {
+    getTime(){
+      if(this.exam.type == 1) {
+        return 25
+      }else {
+        return 120
+      }
     }
   }
 };

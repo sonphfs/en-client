@@ -50,6 +50,7 @@ export default {
     },
     nextStep() {
       if (this.step == this.exam.questions.length-1) {
+        console.log(1231);
         this.submitExam();
       } else {
         this.step++;
@@ -58,7 +59,8 @@ export default {
     submitExam() {
       let examData = JSON.parse(localStorage.getItem("exam_data"));
       let data = {
-        questions: examData
+        questions: examData,
+        examId: this.exam.id
       }
       request({
         url: "/submit-test",
@@ -66,7 +68,8 @@ export default {
         data
       }).then(res => {
         this.examLogId = res.data.result_data.id;
-        this.$router.push("/test/result/" + 1 + "/322");
+        console.log(res.data.result_data)
+        this.$router.push("/test/result/" + this.examLogId + "/" + this.exam.code);
       });
     }
   }

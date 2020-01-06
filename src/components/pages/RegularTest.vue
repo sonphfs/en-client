@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         startTest(){
-            return this.$router.push('/test/'+ this.subjectId)
+            return this.$router.push('/test/' + this.$route.params.type + "/" + this.subjectId)
         },
         relearn() {
             return this.$router.push('/subject/'+ this.subjectId)

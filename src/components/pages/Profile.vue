@@ -36,12 +36,14 @@
               <img
                 class="avatar-img"
                 alt="avatar"
+                width="150px"
+                height="150px"
                 :src="'http://127.0.0.1:8001/'+ this.userInfos.avatar"
               />
               <button
                 type="button"
                 class="btn btn-outline-info btn-upload-avatar"
-                @click="confirmUpdate('avatar', 'Select and upload avatar!')"
+                @click="confirmUpdate('avatar', 'Chọn và thay đổi avatar!')"
               >
                 <i class="mdi mdi-upload"></i>Upload avatar
               </button>
@@ -57,7 +59,7 @@
             <div class="user-info">
               <form
                 class="forms-sample"
-                @submit.prevent="confirmUpdate('infos', 'Update profile!')"
+                @submit.prevent="confirmUpdate('infos', 'Cập nhật thông tin cá nhân!')"
               >
                 <div class="form-group">
                   <label for="Enter username">Tên</label>
@@ -138,7 +140,7 @@
               <button
                 type="button"
                 class="btn btn-success mr-2"
-                @click="confirmUpdate('password', 'Change password!')"
+                @click="confirmUpdate('password', 'Thay đổi mật khẩu')"
               >Lưu thay đổi</button>
             </form>
           </div>
@@ -186,7 +188,7 @@ export default {
     },
     confirmUpdate(type, message) {
       Swal.fire({
-        title: "Confirm",
+        title: "Xác nhận",
         text: message,
         icon: "warning",
         showCancelButton: true,
@@ -251,7 +253,7 @@ export default {
       Swal.fire({
         position: "top",
         icon: "success",
-        title: "Profile has been saved",
+        title: "Thông tin cập nhật thành công!",
         showConfirmButton: false,
         timer: 2000
       });

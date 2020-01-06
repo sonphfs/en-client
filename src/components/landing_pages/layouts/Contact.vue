@@ -60,6 +60,7 @@
 
 <script>
 import request from "@/utils/request";
+import Swal from "sweetalert2";
 export default {
   name: "Contact",
   data() {
@@ -87,10 +88,44 @@ export default {
       }).then(res => {
         // eslint-disable-next-line
         console.log(res.data.result_data);
+        this.showSuccessDiaglog()
+        this.resetContact()
       }).catch(err => {
         // eslint-disable-next-line
         console.log(err.res)
       })
+    },
+    resetContact() {
+        this.email = "",
+        this.first_name = "",
+        this.last_name = "",
+        this.subject = "",
+        this.body = ""
+    },
+    confirmUpdate(type="contact", message) {
+      Swal.fire({
+        title: "Xác nhận",
+        text: message,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "OK",
+        cancelButtonText: "CANCEL",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6"
+      }).then(result => {
+        if (result.value) {
+          this.submitContact()
+        }
+      });
+    },
+    showSuccessDiaglog() {
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Thông tin đã được gửi!",
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
   }
 };

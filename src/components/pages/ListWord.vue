@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     test() {
-      return this.$router.push('/start-test/'+ this.$route.params.id)
+      return this.$router.push('/start-test/subject/'+ this.$route.params.id)
     }
   }
 };

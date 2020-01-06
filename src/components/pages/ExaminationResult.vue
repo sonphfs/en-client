@@ -87,7 +87,7 @@ export default {
     },
     correctAnswerCount() {
       let correctCount = 0;
-      Object.values(this.correct_answer).forEach(element => correctCount++);
+      Object.values(this.correct_answer).forEach(element => correctCount+= element);
       return correctCount;
     },
     wrongAnswerCount() {
