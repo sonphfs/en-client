@@ -30,7 +30,6 @@ const routes = [
         meta: {
             layout: BlankLayout
         },
-        beforeEnter: ifAuthenticated,
         redirect: "/dashboard"
     },
     {
@@ -38,7 +37,9 @@ const routes = [
         component: Dashboard,
         meta : {
             layout: MainLayout
-        }
+        },
+        beforeEnter: ifAuthenticated,
+
     },
     {
         path: '/login',

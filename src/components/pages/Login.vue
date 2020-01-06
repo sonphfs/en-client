@@ -31,6 +31,7 @@
                       </span>
                     </div>
                   </div>
+                  <div v-if="errorMsg" class="help-block text-danger">Email or password incorrect!</div>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary submit-btn btn-block">Login</button>
@@ -58,7 +59,8 @@ export default {
     return {
       email: "phamhungsonk60@gmail.com",
       password: "admin123",
-      token: ""
+      token: "",
+      errorMsg: ""
     };
   },
   components: {},
@@ -68,7 +70,7 @@ export default {
       let data = {
         email: this.email,
         password: this.password,
-        site: "client"
+        site: "client",
       };
       request({
         url: "/login",
@@ -83,7 +85,9 @@ export default {
           this.$router.push("/dashboard");
         })
         .catch(err => {
-          console.log(err);
+           if(err.response.data.msg) {
+              this.errorMsg = err.response.data.msg
+           }
         });
     }
   }
@@ -98,5 +102,9 @@ export default {
 h3.login-title {
   color: black;
   text-align: center;
+}
+.text-danger {
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
 }
 </style>
