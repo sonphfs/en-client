@@ -60,7 +60,7 @@
                 <span class="badge badge-pill badge-danger"></span>
                 <i class="dropdown-item-icon ti-dashboard"></i>
               </a>
-              <a href="#" class="dropdown-item" @click="logout">
+              <a class="dropdown-item" @click="logout">
                 Đăng xuất
                 <i class="dropdown-item-icon ti-power-off"></i>
               </a>
@@ -110,6 +110,7 @@ export default {
       }).then(res => {
         removeToken();
         this.$emit("logout", []);
+        this.$router.push('/dashboard')
       });
     },
     mouseOver() {

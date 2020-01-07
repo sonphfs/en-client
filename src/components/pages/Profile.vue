@@ -54,6 +54,7 @@
                 ref="avatar"
                 style="display: none"
                 @change="uploadAvatarEvent"
+                accept="image/*"
               />
             </div>
             <div class="user-info">
@@ -70,6 +71,7 @@
                     placeholder="username"
                     v-model="userInfos.username"
                   />
+                  <div v-if="validateMessages.username" class="help-block text-danger">{{validateMessages.username[0]}}</div>
                 </div>
                 <div class="form-group">
                   <label for="Email">Email</label>
@@ -79,7 +81,9 @@
                     id="Email"
                     placeholder="Enter email"
                     v-model="userInfos.email"
+                    readonly=""
                   />
+                  <div v-if="validateMessages.email" class="help-block text-danger">{{validateMessages.email[0]}}</div>
                 </div>
                 <div class="form-group">
                   <label for="Phone">Số điện thoại</label>
@@ -90,6 +94,7 @@
                     placeholder="Enter Phone"
                     v-model="userInfos.phone"
                   />
+                  <div v-if="validateMessages.phone" class="help-block text-danger">{{validateMessages.phone[0]}}</div>
                 </div>
                 <div class="form-group">
                   <label for="address">Địa chỉ</label>
@@ -100,6 +105,7 @@
                     placeholder="Enter address"
                     v-model="userInfos.address"
                   />
+                  <div v-if="validateMessages.address" class="help-block text-danger">{{validateMessages.address[0]}}</div>
                 </div>
                 <button type="submit" class="btn btn-success mr-2">Lưu thay đổi</button>
               </form>
@@ -116,6 +122,7 @@
                   placeholder="Enter password"
                   v-model="changePassword.current_password"
                 />
+                <div v-if="validateMessages.current_password" class="help-block text-danger">{{validateMessages.current_password[0]}}</div>
               </div>
               <div class="form-group">
                 <label for="password">Mât khẩu mới</label>
@@ -126,6 +133,7 @@
                   placeholder="Enter password"
                   v-model="changePassword.password"
                 />
+                <div v-if="validateMessages.password" class="help-block text-danger">{{validateMessages.password[0]}}</div>
               </div>
               <div class="form-group">
                 <label for="password_confirmation">Nhập lại mật khẩu mới</label>
@@ -136,6 +144,7 @@
                   placeholder="Enter password"
                   v-model="changePassword.password_confirmation"
                 />
+                <div v-if="validateMessages.password_confirmation" class="help-block text-danger">{{validateMessages.password_confirmation[0]}}</div>
               </div>
               <button
                 type="button"
@@ -163,7 +172,8 @@ export default {
         current_password: "",
         password: "",
         password_confirmation: ""
-      }
+      },
+      validateMessages: {}
     };
   },
   methods: {
@@ -180,10 +190,12 @@ export default {
         .then(res => {
           this.userInfos = res.data.result_data;
           this.showSuccessDiaglog();
+          this.validateMessages = {}
         })
         .catch(err => {
           // eslint-disable-next-line
-          console.log(err.res);
+          console.log(err);
+          this.validateMessages = err.response.data.errors
         });
     },
     confirmUpdate(type, message) {
@@ -224,10 +236,12 @@ export default {
         .then(res => {
           this.userInfos = res.data.result_data;
           this.showSuccessDiaglog();
+          this.validateMessages = {}
         })
         .catch(err => {
           // eslint-disable-next-line
           console.log(err);
+          this.validateMessages = err.response.data.errors
         });
     },
     uploadAvatarEvent($event) {
@@ -244,6 +258,7 @@ export default {
         .then(res => {
           this.userInfos = res.data.result_data;
           this.showSuccessDiaglog();
+          this.validateMessages = {}
         })
         .catch(err => {
           console.log(err);
@@ -350,5 +365,9 @@ button.btn-upload-avatar {
 
 img.avatar-img {
   width: 120px;
+}
+.text-danger {
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
 }
 </style>
