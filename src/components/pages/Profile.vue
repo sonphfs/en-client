@@ -38,7 +38,14 @@
                 alt="avatar"
                 width="150px"
                 height="150px"
-                :src="'http://127.0.0.1:8001/'+ this.userInfos.avatar"
+                v-if="userInfos.avatar" :src="serverUri + userInfos.avatar"
+              />
+              <img
+                class="avatar-img"
+                alt="avatar"
+                width="150px"
+                height="150px"
+                v-if="!userInfos.avatar" :src="serverUri + 'enc/uploads/users/avatars/default-userAvatar.png'"
               />
               <button
                 type="button"
@@ -173,7 +180,8 @@ export default {
         password: "",
         password_confirmation: ""
       },
-      validateMessages: {}
+      validateMessages: {},
+      serverUri: process.env.VUE_APP_BASE_SERVER_URL
     };
   },
   methods: {

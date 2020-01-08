@@ -31,10 +31,13 @@
               aria-expanded="false"
             >
               <img
-                class="img-xs rounded-circle"
-                :src="'http://127.0.0.1:8001/'+ user.avatar"
-                alt="Profile image"
-              />
+                  class="img-md rounded-circle"
+                  v-if="user.avatar" :src="serverUri + user.avatar"
+                />
+                <img
+                  class="img-md rounded-circle"
+                  v-if="!user.avatar" :src="serverUri + 'enc/uploads/users/avatars/default-userAvatar.png'"
+                />
             </a>
             <div
               class="dropdown-menu dropdown-menu-right navbar-dropdown show user-dropdown-infos" style="margin-top: 2px;"
@@ -44,8 +47,11 @@
               <div class="dropdown-header text-center">
                 <img
                   class="img-md rounded-circle"
-                  :src="'http://127.0.0.1:8001/'+ user.avatar"
-                  alt="Profile image"
+                  v-if="user.avatar" :src="serverUri + user.avatar"
+                />
+                <img
+                  class="img-md rounded-circle"
+                  v-if="!user.avatar" :src="serverUri + 'enc/uploads/users/avatars/default-userAvatar.png'"
                 />
                 <p class="mb-1 mt-3 font-weight-semibold">{{user.username}}</p>
                 <p class="font-weight-light text-muted mb-0">{{user.email}}</p>
@@ -99,7 +105,8 @@ export default {
       dave: false,
       word_active: false,
       grammar_active: false,
-      test_active: false
+      test_active: false,
+      serverUri: process.env.VUE_APP_BASE_SERVER_URL
     };
   },
   methods: {
