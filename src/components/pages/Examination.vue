@@ -65,23 +65,32 @@ export default {
     receiveStep(result) {
       this.step = result;
     },
-    initResult(){
+    initResult() {
       let listeningQuestions = [];
       let readingQuestions = [];
       this.partData.forEach(e => {
-        if (e.no != 0 && (e.part == 1 || e.part == 2 || e.part == 3 || e.part == 4)) {
-          listeningQuestions.push({"question_id": e.id, "choose": ""});
+        if (
+          e.no != 0 &&
+          (e.part == 1 || e.part == 2 || e.part == 3 || e.part == 4)
+        ) {
+          listeningQuestions.push({ question_id: e.id, choose: "" });
         }
-        if (e.no != 0 && (e.part == 5 || e.part == 6 || e.part == 7)) {
-          readingQuestions.push({"question_id": e.id, "choose": ""});
+        if (e.no != 0 && e.part == 5) {
+          readingQuestions.push({ question_id: e.id, choose: "" });
+        }
+        if (e.no != 0 && (e.part == 6 || e.part == 7) && e.parent_id != 0) {
+          readingQuestions.push({ question_id: e.id, choose: "" });
         }
       });
-      localStorage.setItem('result_listening',  JSON.stringify(listeningQuestions))
-      localStorage.setItem('result_reading',  JSON.stringify(readingQuestions))
+      localStorage.setItem(
+        "result_listening",
+        JSON.stringify(listeningQuestions)
+      );
+      localStorage.setItem("result_reading", JSON.stringify(readingQuestions));
     }
   },
   created() {
-    let bindThis = this
+    let bindThis = this;
     request({
       url: "/get-exam/" + this.$route.params.code,
       method: "get"
@@ -89,7 +98,7 @@ export default {
       .then(res => {
         console.log(res.data.result_data);
         this.examination = res.data.result_data;
-        bindThis.$route.meta.examType = this.examination.type
+        bindThis.$route.meta.examType = this.examination.type;
         this.partData = this.examination.questions;
         this.initResult();
       })

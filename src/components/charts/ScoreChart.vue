@@ -59,7 +59,7 @@ export default {
         this.logData.forEach((e, i) => {
           labels.push(i + 1);
           data.push(e.total_score);
-          target.push(800);
+          // target.push(800);
         });
         this.datacollection = {
           labels: labels,
@@ -69,11 +69,11 @@ export default {
               backgroundColor: "#42b983",
               data: data
             },
-            {
-              label: "Target",
-              backgroundColor: "#f87979",
-              data: target
-            }
+            // {
+            //   label: "Target",
+            //   backgroundColor: "#f87979",
+            //   data: target
+            // }
           ]
         };
       })

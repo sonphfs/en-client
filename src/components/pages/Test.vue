@@ -1,6 +1,7 @@
 <template>
   <div>
     <Question
+    v-if="exam.questions"
       v-for="(question, key) in exam.questions"
       :key="key + Math.random()"
       :item="question"
